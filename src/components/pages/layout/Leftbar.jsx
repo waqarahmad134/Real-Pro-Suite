@@ -14,6 +14,7 @@ export default function Leftbar(props) {
   const [loading, SetLoading] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [permissions, setPermissions] = useState([]);
+  console.log("🚀 ~ Leftbar ~ permissions:", permissions)
 
   useEffect(() => {
     const storedPermissions = localStorage.getItem("permissions");
@@ -58,7 +59,7 @@ export default function Leftbar(props) {
         </Link>
       </div>
       <div className="h-full">
-        <ul className="flex flex-col gap-y-7 h-4/5 overflow-auto sidebar">
+        <ul className={`flex flex-col ${props.extend !== true ? "items-start" : "items-center"}  gap-y-7 h-4/5 overflow-auto sidebar`}>
           {permissions.length > 0 ? (
             permissions.map((per, index) => (
               <ListItem
@@ -71,7 +72,8 @@ export default function Leftbar(props) {
                 text={
                   props.extend !== true ? per?.permission?.title : undefined
                 }
-                icon="1"
+                
+                icon={per?.permission?.value}
                 opacity={location === "/" ? "opacity-100" : "opacity-60"}
               />
             ))

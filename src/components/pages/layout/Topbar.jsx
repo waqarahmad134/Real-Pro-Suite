@@ -32,9 +32,17 @@ export default function Topbar(props) {
     <nav className={props.extend !== true ? TopCSS : MobileTopCSS}>
       <div className="bg-white px-5 py-4 flex items-center justify-between rounded-lg">
         <div className="flex items-center gap-x-2">
+          <div className="block sm:hidden">
+            <CiMenuBurger
+              onClick={props.onClick}
+              // onClick={handleCanvas}
+              size={24}
+              className="cursor-pointer"
+            />
+          </div>
           <h1 className="font-medium text-2xl">{props.main}</h1>
         </div>
-        <div>
+        <div className="hidden sm:block">
           <InputGroup>
             <InputLeftElement pointerEvents="none">
               <FaSearch className="text-gray-400" />
@@ -67,7 +75,11 @@ export default function Topbar(props) {
                   <h3 className="text-black text-opacity-50 text-sm">
                     SandyMCalpine@gmail.com
                   </h3>
-                  <Link target="_blank" className="text-blue-600 text-lg" to={"/profile"}>
+                  <Link
+                    target="_blank"
+                    className="text-blue-600 text-lg"
+                    to={"/profile"}
+                  >
                     Update Profile
                   </Link>
                   <hr className="my-3" />

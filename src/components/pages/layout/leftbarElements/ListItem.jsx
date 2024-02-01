@@ -9,7 +9,7 @@ export default function ListItem(props) {
         className="inline-flex items-center gap-x-4 font-medium xl:text-base text-sm"
       >
         <img
-          src={`/images/icon${props.icon}.webp`}
+          src={`/images/${props.icon}.png`}
           alt="icon"
           className={`${props.opacity} max-w-[24px]`}
         />
