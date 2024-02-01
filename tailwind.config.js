@@ -10,7 +10,7 @@ module.exports = {
         'fiexen': ['Studio Feixen Sans', 'sans-serif']
       },
       backgroundColor: {
-        'themeBlue': '#124769',
+        'themeBlue': '#01376d',
         'themeBlue2': '#88E8FD',
         'themeBlue3': '#E0F3FF',
         'themeGray': '#F4F7FF',
@@ -31,7 +31,7 @@ module.exports = {
         'themeSilver': '#C0C0C0',
       },
       colors: {
-        'themeBlue': '#124769',
+        'themeBlue': '#01376d',
         'themeBlue2': '#88E8FD',
         'themeBlue3': '#E0F3FF',
         'themeGray': '#F4F7FF',

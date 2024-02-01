@@ -1,8 +1,6 @@
 // @ts-nocheck
 import React from "react";
 import useFetch from "../../../ApiClient/GetApi";
-import Leftbar from "../layout/Leftbar";
-import Topbar from "../layout/Topbar";
 import Card from "./homeElements/Card";
 import NewsCard from "./homeElements/NewsCard";
 import { ContentCSS } from "../../../Utils/Styles";
@@ -17,7 +15,7 @@ export default function Home() {
       <MainLayout />
       <section className={ContentCSS}>
         <h2 className="text-xl font-semibold">Suite Tools</h2>
-        <div className="grid xl:grid-cols-4 lg:grid-cols-3 grid-cols-2 gap-5">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5">
           {data?.data?.length > 0
             ? data?.data?.map((app, index) => (
                 <Card
@@ -35,7 +33,7 @@ export default function Home() {
             : ""}
         </div>
         <h2 className="text-xl font-semibold">Top Apps</h2>
-        <div className="grid xl:grid-cols-4 lg:grid-cols-3 grid-cols-2 gap-5">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5">
           {topApps?.data?.data?.length > 0
             ? topApps?.data?.data?.map((app, index) => (
                 <Card

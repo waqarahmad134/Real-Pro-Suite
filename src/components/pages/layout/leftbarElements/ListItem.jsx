@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function ListItem(props) {
   return (
-    <li className={`text-${props.opacity} text-white`}>
+    <li className={`text-${props.opacity} text-themeBlue`}>
       <Link
         to={props.path}
         className="inline-flex items-center gap-x-4 font-medium xl:text-base text-sm"

@@ -44,7 +44,7 @@ export default function Topbar(props) {
             <InputLeftElement pointerEvents="none">
               <FaSearch className="text-gray-400" />
             </InputLeftElement>
-            <Input type="tel" placeholder="Phone number" />
+            <Input type="text" placeholder="Search" />
           </InputGroup>
         </div>
         <div className="relative">

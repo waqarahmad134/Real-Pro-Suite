@@ -38,7 +38,7 @@ export default function Leftbar() {
   };
 
   return (
-    <div className="bg-themeSilver md:w-52 lg:w-60 xl:w-[280px] absolute md:fixed h-full py-7 pl-8 pr-5 hidden md:flex flex-col gap-y-12">
+    <div className="bg-white md:w-52 lg:w-60 xl:w-[280px] absolute md:fixed h-full py-7 pl-8 pr-5 hidden md:flex flex-col gap-y-12">
       <Link to={"/"}>
         <img src="/images/logo.png" alt="logo" className="w-44" />
       </Link>
