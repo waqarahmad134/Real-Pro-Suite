@@ -2,13 +2,10 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { PostApi } from "../../../ApiClient/PostApi";
-import Sidebar from "./Sidebar";
 import { error_toaster, success_toaster } from "../../toaster/Toaster";
 import { setLoginStatus } from "../../../Utils/AuthCheck";
 import { Loader2 } from "../../loader/Loader";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-// import  {useSelector,useDispatch} from "react-redux";
-// import { incNumber } from '../../../action/index';
 
 export default function Login() {
   const navigate = useNavigate();
@@ -60,12 +57,11 @@ export default function Login() {
         {loading ? (
           <Loader2 />
         ) : (
-          <div className="md:w-[30%] w-4/5">
+          <div className="">
             <div className="bg-white shadow-2xl rounded-md mx-auto flex flex-col justify-center gap-y-8 p-5">
               <div>
-                <img src="/images/logo.png" alt="" />
+                <img className="w-80" src="/images/logo.png" alt="logo" />
               </div>
-              {/* <h1 className="font-bold sm:text-5xl text-4xl text-center">Sign in</h1> */}
               <div className="flex flex-col gap-y-4 mt-10">
                 <input
                   type="email"
@@ -75,7 +71,7 @@ export default function Login() {
                   placeholder="Email"
                   className={inputStyle}
                 />
-                <div className="relative mb-20">
+                <div className="relative mb-10">
                   <button
                     onClick={() => setVisible(!visible)}
                     type="button"
@@ -100,7 +96,7 @@ export default function Login() {
               <button
                 type="submit"
                 onClick={login}
-                className="bg-themeRed text-white font-medium sm:text-xl text-lg py-3 px-8 rounded-md w-full border border-themeRed hover:bg-transparent hover:text-themeRed"
+                className="bg-themeRed text-white font-medium sm:text-xl text-lg py-3 px-8 rounded-md w-3/4 m-auto border border-themeRed hover:bg-transparent hover:text-themeRed"
               >
                 Sign in
               </button>
