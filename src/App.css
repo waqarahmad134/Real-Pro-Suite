@@ -1,0 +1,30 @@
+.sidebar::-webkit-scrollbar {
+    width: 4px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background-color: #F4F5FA;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-track {
+    background-color: #F4F5FA;
+}
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 32px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
