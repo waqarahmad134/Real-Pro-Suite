@@ -29,14 +29,9 @@ export default function Topbar(props) {
     }
   };
   return (
-    <nav className={canvas !== true ? TopCSS : MobileTopCSS}>
+    <nav className={props.extend !== true ? TopCSS : MobileTopCSS}>
       <div className="bg-white px-5 py-4 flex items-center justify-between rounded-lg">
         <div className="flex items-center gap-x-2">
-          <CiMenuBurger
-            onClick={handleCanvas}
-            size={24}
-            className="cursor-pointer"
-          />
           <h1 className="font-medium text-2xl">{props.main}</h1>
         </div>
         <div>

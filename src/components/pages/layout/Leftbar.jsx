@@ -5,8 +5,10 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { PostApi } from "../../../ApiClient/PostApi";
 import { error_toaster, success_toaster } from "../../toaster/Toaster";
 import ListItem, { MiniItem } from "./leftbarElements/ListItem";
+import { LeftCSS, MobileLeftCSS, TopCSS } from "../../../Utils/Styles";
+import { CiMenuBurger } from "react-icons/ci";
 
-export default function Leftbar() {
+export default function Leftbar(props) {
   const location = useLocation().pathname;
   const navigate = useNavigate();
   const [loading, SetLoading] = useState(false);
@@ -38,18 +40,37 @@ export default function Leftbar() {
   };
 
   return (
-    <div className="bg-white md:w-52 lg:w-60 xl:w-[280px] absolute md:fixed h-full py-7 pl-8 pr-5 hidden md:flex flex-col gap-y-12">
-      <Link to={"/"}>
-        <img src="/images/logo.png" alt="logo" className="w-44" />
-      </Link>
+    <div className={props.extend !== true ? LeftCSS : MobileLeftCSS}>
+      <div className="">
+        <div className="flex justify-center md:justify-end mb-4">
+          <CiMenuBurger
+            onClick={props.onClick}
+            size={24}
+            className="cursor-pointer"
+          />
+        </div>
+        <Link to={"/"}>
+          {props.extend !== true ? (
+            <img src="/images/logo.png" alt="logo" className="w-44" />
+          ) : (
+            <img src="/images/favicon.webp" alt="logo" className="w-44" />
+          )}
+        </Link>
+      </div>
       <div className="h-full">
         <ul className="flex flex-col gap-y-7 h-4/5 overflow-auto sidebar">
           {permissions.length > 0 ? (
             permissions.map((per, index) => (
               <ListItem
                 key={index}
-                path={per?.permission?.value === 'agent_dashboard' ? '/' : `/${per?.permission?.value}` }
-                text={per?.permission?.title}
+                path={
+                  per?.permission?.value === "agent_dashboard"
+                    ? "/"
+                    : `/${per?.permission?.value}`
+                }
+                text={
+                  props.extend !== true ? per?.permission?.title : undefined
+                }
                 icon="1"
                 opacity={location === "/" ? "opacity-100" : "opacity-60"}
               />
@@ -58,7 +79,7 @@ export default function Leftbar() {
             <p>Loading permissions...</p>
           )}
         </ul>
-        <div className="flex items-center gap-x-8 absolute bottom-7">
+        {/* <div className="flex items-center gap-x-8 absolute bottom-7">
           <MiniItem path="/" icon="10" />
           {loading ? (
             <p>Loading...</p>
@@ -67,7 +88,7 @@ export default function Leftbar() {
               <MiniItem icon="12" />
             </button>
           )}
-        </div>
+        </div> */}
       </div>
     </div>
   );
