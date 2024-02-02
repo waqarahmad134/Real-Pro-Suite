@@ -14,7 +14,7 @@ export default function Home() {
     <>
       <MainLayout />
       <section className={ContentCSS}>
-        <h2 className="text-xl font-semibold">Suite Tools  <hr /> </h2>
+        <h2 className="text-xl font-semibold">Suite Tools  <hr className="border-t-2 my-2"/> </h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5">
           {data?.data?.length > 0
             ? data?.data?.map((app, index) => (
@@ -32,7 +32,7 @@ export default function Home() {
               ))
             : ""}
         </div>
-        <h2 className="text-xl font-semibold">Top Apps <hr /> </h2>
+        <h2 className="text-xl font-semibold">Top Apps<hr className="border-t-2 my-2"/></h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5">
           {topApps?.data?.data?.length > 0
             ? topApps?.data?.data?.map((app, index) => (
