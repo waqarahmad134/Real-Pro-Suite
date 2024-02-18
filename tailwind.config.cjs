@@ -16,6 +16,7 @@ module.exports = {
     },
     extend: {
       colors: {
+        'themeBlue': '#01376d',
         current: 'currentColor',
         transparent: 'transparent',
         white: '#FFFFFF',
