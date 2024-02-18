@@ -1,5 +1,5 @@
 {
-  "name": "tailadmin-react-free",
+  "name": "realprosuite",
   "private": true,
   "version": "1.3.0",
   "type": "module",
@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "author": {
-    "name": "TailAdmin",
+    "name": "realprosuite",
     "email": "hello@tailadmin.com",
     "url": "https://tailadmin.com"
   },
