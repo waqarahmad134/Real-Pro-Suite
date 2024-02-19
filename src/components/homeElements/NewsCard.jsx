@@ -4,27 +4,28 @@ import { FaBookOpen } from "react-icons/fa";
 
 export default function NewsCard(props) {
   return (
-    <div className="bg-white rounded-lg p-5 ">
+    <div className="bg-white rounded-lg p-5">
       <div className="grid grid-cols-2">
         <div className={`{props.order}`}>
-          <img
+          {/* <img
             className="rounded-lg "
             src={`${props.img}`}
             alt=""
-          />
+          /> */}
+          <video className="rounded-lg" src={props.video} autoPlay loop muted controls></video>
         </div>
         <div className="p-5">
           <h5 className="text-gray-400 text-sm">MORE TO KNOW</h5>
-          <h2 className="text-2xl font-semibold">{props.title}</h2>
-          <h5 className="text-gray-400 text-sm">
+          <h2 className="text-2xl font-semibold capitalize">{props.title}</h2>
+          <h5 className="text-gray-400 text-sm capitalize">
           {props.desc}
           </h5>
         </div>
       </div>
       <div className="bg-gray-300 rounded-md">
         <div className="flex justify-between items-center px-5 py-1">
-          <h4 className="text-gray-500 flex gap-x-2 items-center">
-            <FaBookOpen /> News
+          <h4 className="text-gray-500 flex gap-x-2 items-center capitalize">
+            <FaBookOpen /> {props.category}
           </h4>
           <FaBookmark className="text-gray-500" />
         </div>

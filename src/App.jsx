@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Route, Routes, useLocation } from 'react-router-dom';
+import { Link, Route, Routes, useLocation } from 'react-router-dom';
 
 import Loader from './common/Loader';
 import PageTitle from './components/PageTitle';
@@ -7,12 +7,12 @@ import SignIn from './pages/Authentication/SignIn';
 import SignUp from './pages/Authentication/SignUp';
 import Chart from './pages/Chart';
 import ECommerce from './pages/Dashboard/ECommerce';
-import FormElements from './pages/Form/FormElements';
+import Apps from './pages/Apps';
 import FormLayout from './pages/Form/FormLayout';
 import Profile from './pages/Profile';
 import Settings from './pages/Settings';
 import Tables from './pages/Tables';
-// import Buttons from './pages/UiElements/buttons';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -30,32 +30,33 @@ function App() {
     <Loader />
   ) : (
     <>
+      <ToastContainer />
       <Routes>
         <Route
           index
           element={
             <>
-              <PageTitle title="eCommerce Dashboard | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="Dashboard | Real Pro Suite" />
               <ECommerce />
             </>
           }
         />
-       
+
         <Route
-          path="/profile"
+          path="/apps"
           element={
             <>
-              <PageTitle title="Profile | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-              <Profile />
+              <PageTitle title="Apps | Real Pro Suite" />
+              <Apps />
             </>
           }
         />
         <Route
-          path="/forms/form-elements"
+          path="/profile"
           element={
             <>
-              <PageTitle title="Form Elements | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-              <FormElements />
+              <PageTitle title="Profile | Real Pro Suite" />
+              <Profile />
             </>
           }
         />
@@ -95,21 +96,12 @@ function App() {
             </>
           }
         />
-      
-        {/* <Route
-          path="/ui/buttons"
-          element={
-            <>
-              <PageTitle title="Buttons | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-              <Buttons />
-            </>
-          }
-        /> */}
+
         <Route
           path="/auth/signin"
           element={
             <>
-              <PageTitle title="Signin | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="Signin | Real Pro Suite" />
               <SignIn />
             </>
           }
@@ -120,6 +112,17 @@ function App() {
             <>
               <PageTitle title="Signup | TailAdmin - Tailwind CSS Admin Dashboard Template" />
               <SignUp />
+            </>
+          }
+        />
+        <Route
+          path="/*"
+          element={
+            <>
+              No page Found{' '}
+              <Link className="px-3 py-1 bg-themeBlue text-white" to="/">
+                Back to Home{' '}
+              </Link>
             </>
           }
         />

@@ -1,9 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Breadcrumb from '../../components/Breadcrumbs/Breadcrumb';
 import LogoDark from '../../../public/images/logo.png';
 import Logo from '../../../public/images/logo.png';
-import DefaultLayout from '../../layout/DefaultLayout';
 
 const SignUp = () => {
   return (

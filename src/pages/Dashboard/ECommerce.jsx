@@ -3,10 +3,13 @@ import DefaultLayout from '../../layout/DefaultLayout';
 import useFetch from '../../ApiClient/GetApi';
 import Card from '../../components/homeElements/Card';
 import { BASE_URL } from '../../Utils/urls';
+import NewsCard from '../../components/homeElements/NewsCard';
 
 const ECommerce = () => {
   const { data } = useFetch('dashboard/v1/suiteTools');
   const topApps = useFetch('dashboard/v1/getTopApps');
+  const video = useFetch('dashboard/v1/allVideos');
+  console.log('🚀 ~ ECommerce ~ video:', video?.data?.data);
   return (
     <DefaultLayout>
       <div>
@@ -52,8 +55,35 @@ const ECommerce = () => {
             : ''}
         </div>
       </div>
-
-     
+      <div className='my-15'>
+        {video?.data?.data?.map((data, index) => (
+          <NewsCard
+            img={`${BASE_URL}${data.thumbnailUrl}`}
+            video={`${BASE_URL}${data.videoUrl}`}
+            title={data?.title}
+            order="order-2"
+            desc={data?.description}
+            category={data?.category}
+          />
+        ))}
+        {/* <div className="grid grid-cols-2 gap-3 my-5">
+          <NewsCard
+            img="https://i.ytimg.com/vi/seNKZeot5A8/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AHUBoAC4AOKAgwIABABGGUgVChJMA8=&rs=AOn4CLBi1q3K0RJyVC3Dq3sQn2Pdn8ZaJg"
+            title="Top 10 reports coming in June"
+            order="order-1"
+            desc="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Inventore,
+          in debitis soluta labore modi hic ullam aspernatur vero voluptate
+          error."
+          />
+          <NewsCard
+            img="https://i.ytimg.com/vi/seNKZeot5A8/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AHUBoAC4AOKAgwIABABGGUgVChJMA8=&rs=AOn4CLBi1q3K0RJyVC3Dq3sQn2Pdn8ZaJg"
+            title="Jared james' Advice? Breathe and Be Ready"
+            order="order-1"
+            desc="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Inventore,
+          in debitis soluta labore modi hic."
+          />
+        </div> */}
+      </div>
     </DefaultLayout>
   );
 };

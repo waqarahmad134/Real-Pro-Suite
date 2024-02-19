@@ -57,7 +57,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
   return (
     <aside
       ref={sidebar}
-      className={`absolute left-0 top-0 z-9999 flex h-screen w-72.5 flex-col overflow-y-hidden bg-white duration-300 ease-linear dark:bg-boxdark lg:static lg:translate-x-0 ${
+      className={`absolute left-0 top-0 z-9999 flex h-screen w-72.5 flex-col overflow-y-hidden bg-white duration-300 ease-linear dark:bg-graydark lg:static lg:translate-x-0 ${
         sidebarOpen ? 'translate-x-0' : '-translate-x-full'
       }`}
     >
@@ -102,97 +102,174 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
 
             <ul className="mb-6 flex flex-col gap-1.5">
               {/* <!-- Menu Item Profile --> */}
-              <li>
-                <NavLink
-                  to="/"
-                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-themeBlue duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
-                    pathname.includes('dashboard') &&
-                    'bg-graydark dark:bg-meta-4'
-                  }`}
-                >
-                  <img
-                    src="../images/agent_dashboard.png"
-                    alt=""
-                    className="opacity-100 max-w-[22px]"
-                  />
-                  Agent Dashboard
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/apps"
-                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-themeBlue duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
-                    pathname.includes('apps') && 'bg-graydark dark:bg-meta-4'
-                  }`}
-                >
-                  <img
-                    src="../images/apps.png"
-                    alt=""
-                    className="opacity-100 max-w-[28px]"
-                  />
-                  Apps
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/news&resources"
-                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-themeBlue duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
-                    pathname.includes('news&resources') && 'bg-graydark dark:bg-meta-4'
-                  }`}
-                >
-                  <img
-                    src="../images/news&resources.png"
-                    alt=""
-                    className="opacity-100 max-w-[28px]"
-                  />
-                  News & Resources
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/tools"
-                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-themeBlue duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
-                    pathname.includes('tools') && 'bg-graydark dark:bg-meta-4'
-                  }`}
-                >
-                  <img
-                    src="../images/tools.png"
-                    alt=""
-                    className="opacity-100 max-w-[28px]"
-                  />
-                  Tools
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/offices"
-                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-themeBlue duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
-                    pathname.includes('offices') && 'bg-graydark dark:bg-meta-4'
-                  }`}
-                >
-                  <img
-                    src="../images/offices.png"
-                    alt=""
-                    className="opacity-100 max-w-[28px]"
-                  />
-                  Offices
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/agents"
-                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-themeBlue duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
-                    pathname.includes('agents') && 'bg-graydark dark:bg-meta-4'
-                  }`}
-                >
-                  <img
-                    src="../images/agents.png"
-                    alt=""
-                    className="opacity-100 max-w-[28px]"
-                  />
-                  Agents
-                </NavLink>
-              </li>
+              {pathname.includes('profile') ? (
+                <>
+                  <li>
+                    <NavLink
+                      to="/profile"
+                      className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-themeBlue duration-300 ease-in-out hover:bg-[#0068d1] hover:text-white dark:text-white dark:hover:bg-meta-4 ${
+                        pathname.includes('profile') &&
+                        'bg-themeGray2 dark:bg-meta-4'
+                      }`}
+                    >
+                      Profile Overview
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      to="/general-info"
+                      className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-themeBlue duration-300 ease-in-out hover:bg-[#0068d1] hover:text-white dark:text-white dark:hover:bg-meta-4 ${
+                        pathname.includes('agents') &&
+                        'bg-graydark dark:bg-meta-4'
+                      }`}
+                    >
+                      General Info
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      to="/contact-info"
+                      className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-themeBlue duration-300 ease-in-out hover:bg-[#0068d1] hover:text-white dark:text-white dark:hover:bg-meta-4 ${
+                        pathname.includes('agents') &&
+                        'bg-graydark dark:bg-meta-4'
+                      }`}
+                    >
+                      Contact Info
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      to="/professional-details"
+                      className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-themeBlue duration-300 ease-in-out hover:bg-[#0068d1] hover:text-white dark:text-white dark:hover:bg-meta-4 ${
+                        pathname.includes('agents') &&
+                        'bg-graydark dark:bg-meta-4'
+                      }`}
+                    >
+                      Professional Details
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      to="/personal-details"
+                      className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-themeBlue duration-300 ease-in-out hover:bg-[#0068d1] hover:text-white dark:text-white dark:hover:bg-meta-4 ${
+                        pathname.includes('agents') &&
+                        'bg-graydark dark:bg-meta-4'
+                      }`}
+                    >
+                      Personal Details
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      to="/awards"
+                      className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-themeBlue duration-300 ease-in-out hover:bg-[#0068d1] hover:text-white dark:text-white dark:hover:bg-meta-4 ${
+                        pathname.includes('agents') &&
+                        'bg-graydark dark:bg-meta-4'
+                      }`}
+                    >
+                      Awards
+                    </NavLink>
+                  </li>
+                </>
+              ) : (
+                <>
+                  <li>
+                    <NavLink
+                      to="/"
+                      className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-themeBlue duration-300 ease-in-out hover:bg-[#0068d1] hover:text-white dark:hover:bg-meta-4 ${
+                        pathname.includes('/') && 'bg-themeGray2 dark:bg-meta-4'
+                      }`}
+                    >
+                      <img
+                        src="../images/agent_dashboard.png"
+                        alt=""
+                        className="opacity-100 max-w-[22px]"
+                      />
+                      Agent Dashboard
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      to="/apps"
+                      className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-themeBlue duration-300 ease-in-out hover:bg-[#0068d1] hover:text-white dark:hover:bg-meta-4 ${
+                        pathname.includes('apps') &&
+                        'bg-themeGray2 dark:bg-meta-4'
+                      }`}
+                    >
+                      <img
+                        src="../images/apps.png"
+                        alt=""
+                        className="opacity-100 max-w-[28px]"
+                      />
+                      Apps
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      to="/news&resources"
+                      className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-themeBlue duration-300 ease-in-out hover:bg-[#0068d1] hover:text-white dark:hover:bg-meta-4 ${
+                        pathname.includes('news&resources') &&
+                        'bg-graydark dark:bg-meta-4'
+                      }`}
+                    >
+                      <img
+                        src="../images/news&resources.png"
+                        alt=""
+                        className="opacity-100 max-w-[28px]"
+                      />
+                      News & Resources
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      to="/tools"
+                      className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-themeBlue duration-300 ease-in-out hover:bg-[#0068d1] hover:text-white dark:hover:bg-meta-4 ${
+                        pathname.includes('tools') &&
+                        'bg-graydark dark:bg-meta-4'
+                      }`}
+                    >
+                      <img
+                        src="../images/tools.png"
+                        alt=""
+                        className="opacity-100 max-w-[28px]"
+                      />
+                      Tools
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      to="/offices"
+                      className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-themeBlue duration-300 ease-in-out hover:bg-[#0068d1] hover:text-white dark:hover:bg-meta-4 ${
+                        pathname.includes('offices') &&
+                        'bg-graydark dark:bg-meta-4'
+                      }`}
+                    >
+                      <img
+                        src="../images/offices.png"
+                        alt=""
+                        className="opacity-100 max-w-[28px]"
+                      />
+                      Offices
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      to="/agents"
+                      className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-themeBlue duration-300 ease-in-out hover:bg-[#0068d1] hover:text-white dark:text-white dark:hover:bg-meta-4 ${
+                        pathname.includes('agents') &&
+                        'bg-graydark dark:bg-meta-4'
+                      }`}
+                    >
+                      <img
+                        src="../images/agents.png"
+                        alt=""
+                        className="opacity-100 max-w-[28px]"
+                      />
+                      Agents
+                    </NavLink>
+                  </li>
+                </>
+              )}
             </ul>
           </div>
         </nav>
