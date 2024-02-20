@@ -105,7 +105,7 @@ const DropdownUser = () => {
                   <li>Pay Bill</li>
                 </ul>
               </div>
-              <Link to={'/login'} className="text-blue-600 text-lg">
+              <Link to={'/auth/signin'} className="text-blue-600 text-lg">
                 Logout
               </Link>
             </div>

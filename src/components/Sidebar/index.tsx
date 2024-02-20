@@ -120,7 +120,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                       to="/general-info"
                       className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-themeBlue duration-300 ease-in-out hover:bg-[#0068d1] hover:text-white dark:text-white dark:hover:bg-meta-4 ${
                         pathname.includes('agents') &&
-                        'bg-graydark dark:bg-meta-4'
+                        'bg-themeGray2 dark:bg-meta-4'
                       }`}
                     >
                       General Info
@@ -204,22 +204,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                       Apps
                     </NavLink>
                   </li>
-                  <li>
-                    <NavLink
-                      to="/add-video"
-                      className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-themeBlue duration-300 ease-in-out hover:bg-[#0068d1] hover:text-white dark:hover:bg-meta-4 ${
-                        pathname.includes('add-video') &&
-                        'bg-themeGray2 dark:bg-meta-4'
-                      }`}
-                    >
-                      <img
-                        src="../images/apps.png"
-                        alt=""
-                        className="opacity-100 max-w-[28px]"
-                      />
-                      Add Video
-                    </NavLink>
-                  </li>
+
                   <li>
                     <NavLink
                       to="/news&resources"
@@ -257,7 +242,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                       to="/offices"
                       className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-themeBlue duration-300 ease-in-out hover:bg-[#0068d1] hover:text-white dark:hover:bg-meta-4 ${
                         pathname.includes('offices') &&
-                        'bg-graydark dark:bg-meta-4'
+                        'bg-themeGray2 dark:bg-meta-4'
                       }`}
                     >
                       <img
@@ -273,7 +258,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                       to="/agents"
                       className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-themeBlue duration-300 ease-in-out hover:bg-[#0068d1] hover:text-white dark:text-white dark:hover:bg-meta-4 ${
                         pathname.includes('agents') &&
-                        'bg-graydark dark:bg-meta-4'
+                        'bg-themeGray2 dark:bg-meta-4'
                       }`}
                     >
                       <img

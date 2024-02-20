@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { Link, Route, Routes, useLocation } from 'react-router-dom';
-
 import Loader from './common/Loader';
 import PageTitle from './components/PageTitle';
 import SignIn from './pages/Authentication/SignIn';
@@ -15,6 +14,10 @@ import Tables from './pages/Tables';
 import { ToastContainer } from 'react-toastify';
 import Video from './pages/Video';
 import { ChakraProvider } from '@chakra-ui/react';
+import { PrimeReactProvider, PrimeReactContext } from 'primereact/api';
+import 'primereact/resources/themes/lara-light-cyan/theme.css';
+import Agents from './pages/Agents';
+import Offices from './pages/Offices';
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -33,113 +36,115 @@ function App() {
   ) : (
     <>
       <ToastContainer />
-      <ChakraProvider>
-        <Routes>
-          <Route
-            index
-            element={
-              <>
-                <PageTitle title="Dashboard | Real Pro Suite" />
-                <ECommerce />
-              </>
-            }
-          />
+      <PrimeReactProvider>
+        <ChakraProvider>
+          <Routes>
+            <Route
+              index
+              element={
+                <>
+                  <PageTitle title="Dashboard | Real Pro Suite" />
+                  <ECommerce />
+                </>
+              }
+            />
 
-          <Route
-            path="/apps"
-            element={
-              <>
-                <PageTitle title="Apps | Real Pro Suite" />
-                <Apps />
-              </>
-            }
-          />
-          <Route
-            path="/add-video"
-            element={
-              <>
-                <PageTitle title="Add Video | Real Pro Suite" />
-                <Video />
-              </>
-            }
-          />
-          <Route
-            path="/profile"
-            element={
-              <>
-                <PageTitle title="Profile | Real Pro Suite" />
-                <Profile />
-              </>
-            }
-          />
-          <Route
-            path="/forms/form-layout"
-            element={
-              <>
-                <PageTitle title="Form Layout | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-                <FormLayout />
-              </>
-            }
-          />
-          <Route
-            path="/tables"
-            element={
-              <>
-                <PageTitle title="Tables | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-                <Tables />
-              </>
-            }
-          />
-          <Route
-            path="/settings"
-            element={
-              <>
-                <PageTitle title="Settings | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-                <Settings />
-              </>
-            }
-          />
-          <Route
-            path="/chart"
-            element={
-              <>
-                <PageTitle title="Basic Chart | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-                <Chart />
-              </>
-            }
-          />
+            <Route
+              path="/apps"
+              element={
+                <>
+                  <PageTitle title="Apps | Real Pro Suite" />
+                  <Apps />
+                </>
+              }
+            />
+            <Route
+              path="/add-video"
+              element={
+                <>
+                  <PageTitle title="Add Video | Real Pro Suite" />
+                  <Video />
+                </>
+              }
+            />
+            <Route
+              path="/profile"
+              element={
+                <>
+                  <PageTitle title="Profile | Real Pro Suite" />
+                  <Profile />
+                </>
+              }
+            />
+            <Route
+              path="/agents"
+              element={
+                <>
+                  <PageTitle title="Agents | Real Pro Suite" />
+                  <Agents />
+                </>
+              }
+            />
+            <Route
+              path="/offices"
+              element={
+                <>
+                  <PageTitle title="Offices | Real Pro Suite" />
+                  <Offices />
+                </>
+              }
+            />
+            <Route
+              path="/settings"
+              element={
+                <>
+                  <PageTitle title="Settings | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+                  <Settings />
+                </>
+              }
+            />
+            <Route
+              path="/chart"
+              element={
+                <>
+                  <PageTitle title="Basic Chart | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+                  <Chart />
+                </>
+              }
+            />
 
-          <Route
-            path="/auth/signin"
-            element={
-              <>
-                <PageTitle title="Signin | Real Pro Suite" />
-                <SignIn />
-              </>
-            }
-          />
-          <Route
-            path="/auth/signup"
-            element={
-              <>
-                <PageTitle title="Signup | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-                <SignUp />
-              </>
-            }
-          />
-          <Route
-            path="/*"
-            element={
-              <>
-                No page Found{' '}
-                <Link className="px-3 py-1 bg-themeBlue text-white" to="/">
-                  Back to Home{' '}
-                </Link>
-              </>
-            }
-          />
-        </Routes>
-      </ChakraProvider>
+            <Route
+              path="/auth/signin"
+              element={
+                <>
+                  <PageTitle title="Signin | Real Pro Suite" />
+                  <SignIn />
+                </>
+              }
+            />
+            <Route
+              path="/auth/signup"
+              element={
+                <>
+                  <PageTitle title="Signup | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+                  <SignUp />
+                </>
+              }
+            />
+            <Route
+              path="/*"
+              element={
+                <>
+                  No page Found{' '}
+                  <Link className="px-3 py-1 bg-themeBlue text-white" to="/">
+                    Back to Home{' '}
+                  </Link>
+                </>
+              }
+            />
+          </Routes>
+        </ChakraProvider>
+      </PrimeReactProvider>
     </>
   );
 }

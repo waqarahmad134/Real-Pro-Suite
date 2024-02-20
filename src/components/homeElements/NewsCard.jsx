@@ -12,7 +12,7 @@ export default function NewsCard(props) {
             src={`${props.img}`}
             alt=""
           /> */}
-          <video className="rounded-lg" src={props.video} autoPlay loop muted controls></video>
+          <video className="rounded-lg" src={props.video} autoPlay loop muted ></video>
         </div>
         <div className="p-5">
           <h5 className="text-gray-400 text-sm">MORE TO KNOW</h5>
