@@ -14,10 +14,14 @@
     "url": "https://tailadmin.com"
   },
   "dependencies": {
+    "@chakra-ui/react": "^2.8.2",
+    "@emotion/react": "^11.11.3",
+    "@emotion/styled": "^11.11.0",
     "@react-icons/all-files": "^4.1.0",
     "apexcharts": "^3.41.0",
     "axios": "^1.6.7",
     "flatpickr": "^4.6.13",
+    "framer-motion": "^11.0.5",
     "headlessui": "^0.0.0",
     "jsvectormap": "^1.5.3",
     "match-sorter": "^6.3.1",
