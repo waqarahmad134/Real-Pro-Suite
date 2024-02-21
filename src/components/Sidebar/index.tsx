@@ -210,7 +210,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                       to="/news&resources"
                       className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-themeBlue duration-300 ease-in-out hover:bg-[#0068d1] hover:text-white dark:hover:bg-meta-4 ${
                         pathname.includes('news&resources') &&
-                        'bg-graydark dark:bg-meta-4'
+                        'bg-themeGray2 dark:bg-meta-4'
                       }`}
                     >
                       <img

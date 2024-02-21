@@ -4,13 +4,9 @@ import Loader from './common/Loader';
 import PageTitle from './components/PageTitle';
 import SignIn from './pages/Authentication/SignIn';
 import SignUp from './pages/Authentication/SignUp';
-import Chart from './pages/Chart';
 import ECommerce from './pages/Dashboard/ECommerce';
 import Apps from './pages/Apps';
-import FormLayout from './pages/Form/FormLayout';
 import Profile from './pages/Profile';
-import Settings from './pages/Settings';
-import Tables from './pages/Tables';
 import { ToastContainer } from 'react-toastify';
 import Video from './pages/Video';
 import { ChakraProvider } from '@chakra-ui/react';
@@ -18,6 +14,7 @@ import { PrimeReactProvider, PrimeReactContext } from 'primereact/api';
 import 'primereact/resources/themes/lara-light-cyan/theme.css';
 import Agents from './pages/Agents';
 import Offices from './pages/Offices';
+import News from './pages/News';
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -95,23 +92,16 @@ function App() {
               }
             />
             <Route
-              path="/settings"
+              path="/news&resources"
               element={
                 <>
-                  <PageTitle title="Settings | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-                  <Settings />
+                  <PageTitle title="Offices | Real Pro Suite" />
+                  <News />
                 </>
               }
             />
-            <Route
-              path="/chart"
-              element={
-                <>
-                  <PageTitle title="Basic Chart | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-                  <Chart />
-                </>
-              }
-            />
+          
+          
 
             <Route
               path="/auth/signin"
