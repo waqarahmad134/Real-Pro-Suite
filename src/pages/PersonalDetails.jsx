@@ -110,8 +110,8 @@ export default function PersonalDetails() {
         {loading ? (
           <Loader2 />
         ) : (
-          <>
-            <div className="bg-white p-10 space-y-6">
+          <div className="bg-white p-10 space-y-8">
+            <div>
               <div className="flex justify-between">
                 <p className="text-lg text-gray-500 font-semibold">
                   Personal Bid
@@ -121,8 +121,8 @@ export default function PersonalDetails() {
                   Edit
                 </button>
               </div>
-              <div>
-              <hr className='my-2' />
+              <hr className="my-3" />
+              <div className="mt-4">
                 <p>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse
                   asperiores quaerat exercitationem rerum impedit iste
@@ -135,45 +135,62 @@ export default function PersonalDetails() {
                   reiciendis quidem cumque amet, excepturi iusto.
                 </p>
               </div>
-
-              <div className="grid md:grid-cols-2 gap-x-5 gap-y-4">
-                <div className="space-y-2">
-                  <div>
-                    <label>Phone</label>
-                  </div>
-                  <input
-                    onChange={onChange}
-                    name="phone"
-                    value={formData.phone}
-                    className="py-3 px-6 bg-themeGray focus:outline-gray-200 w-full"
-                    placeholder={data?.data?.phone ?? ''}
-                  />
-                </div>
-                <div className="space-y-2">
-                  <div>
-                    <label>Email</label>
-                  </div>
-                  <input
-                    onChange={onChange}
-                    name="email"
-                    value={formData.email}
-                    className="py-3 px-6 bg-themeGray focus:outline-gray-200 w-full"
-                    placeholder={data?.data?.email ?? ''}
-                  />
-                </div>
+            </div>
+            <div>
+              <div className="flex justify-between">
+                <p className="text-lg text-gray-500 font-semibold">
+                  Educational Background
+                </p>
               </div>
-              <div className="flex justify-end">
-                <div>
-                  <button
-                    onClick={update_profile}
-                    className="bg-themeBlue text-white rounded py-1 px-8 border border-themeBlue hover:text-themeBlue hover:bg-white"
-                  >
-                    Update
-                  </button>
-                </div>
+              <hr className="my-3" />
+              <div className="mt-4">
+                <p>No educational background to display</p>
               </div>
             </div>
-          </>
+            <div>
+              <div className="flex justify-between">
+                <p className="text-lg text-gray-500 font-semibold">
+                  Civic Activities
+                </p>
+              </div>
+              <hr className="my-3" />
+              <div className="mt-4">
+                <p>No Civic activities to display</p>
+              </div>
+            </div>
+            <div>
+              <div className="flex justify-between">
+                <p className="text-lg text-gray-500 font-semibold">Hoobies</p>
+              </div>
+              <hr className="my-3" />
+              <div className="mt-4">
+                <p>No Hoobies to display</p>
+              </div>
+            </div>
+            <div>
+              <div className="flex justify-between">
+                <p className="text-lg text-gray-500 font-semibold">Languages</p>
+              </div>
+              <hr className="my-3" />
+              <div className="flex justify-between items-center mt-4">
+                <p>English (1)</p>
+                <button className="flex items-center gap-x-2">
+                  <MdEdit />
+                  Edit
+                </button>
+              </div>
+            </div>
+            <div className="flex justify-end">
+              <div>
+                <button
+                  onClick={update_profile}
+                  className="bg-themeBlue text-white rounded py-1 px-8 border border-themeBlue hover:text-themeBlue hover:bg-white"
+                >
+                  Update
+                </button>
+              </div>
+            </div>
+          </div>
         )}
       </section>
     </DefaultLayout>
