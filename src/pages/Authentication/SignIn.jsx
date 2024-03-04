@@ -26,7 +26,6 @@ const SignIn = () => {
         password: data.password,
       });
 
-      console.log('🚀 ~ login ~ res:', res);
       if (res?.data?.status === '1') {
         setLoading(false);
         localStorage.setItem('loginStatus', true);
@@ -54,7 +53,7 @@ const SignIn = () => {
         {loading ? (
           <Loader2 />
         ) : (
-          <div className="">
+          <form className="">
             <div className="bg-white shadow-2xl rounded-md mx-auto flex flex-col justify-center gap-y-8 p-5">
               <div>
                 <img className="w-80" src="/images/logo.png" alt="logo" />
@@ -112,7 +111,7 @@ const SignIn = () => {
               </h4>
               <h4 className="text-themeBlue">Support@therealproway.com</h4>
             </div>
-          </div>
+          </form>
         )}
       </section>
     </>

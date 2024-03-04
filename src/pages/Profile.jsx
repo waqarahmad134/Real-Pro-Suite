@@ -17,8 +17,6 @@ export default function Profile() {
     confirmPassword: '',
   });
   const [loading, SetLoading] = useState(false);
-  const [tabs, setTabs] = useState(1);
-  console.log('🚀 ~ Profile ~ tabs:', tabs);
   const onChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -89,7 +87,7 @@ export default function Profile() {
           <Loader2 />
         ) : (
           <>
-            {tabs === 1 ? (
+           
               <div className="bg-white p-10 space-y-6">
                 <h3 className="text-lg text-gray-500 font-semibold">
                   General Info
@@ -168,81 +166,8 @@ export default function Profile() {
                   </div>
                 </div>
               </div>
-            ) : (
-              <>
-                <div className="bg-white p-10 space-y-6">
-                  <p className="text-lg text-gray-500 font-semibold">
-                    NAME & TITLE
-                  </p>
-                  <div className="grid md:grid-cols-2 gap-x-5 gap-y-4">
-                    <div className="space-y-2">
-                      <div>
-                        <label>Name</label>
-                      </div>
-                      <input
-                        onChange={onChange}
-                        name="firstName"
-                        value={formData.firstName}
-                        className="py-3 px-8 bg-themeGray3 focus:outline-gray-200 w-full"
-                        placeholder={data?.data?.firstName ?? ''}
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <div>
-                        <label>Team</label>
-                      </div>
-
-                      <input
-                        onChange={onChange}
-                        name="lastName"
-                        value={formData.lastName}
-                        className="py-3 px-8 bg-themeGray3 focus:outline-gray-200 w-full"
-                        placeholder={data?.data?.lastName ?? ''}
-                      />
-                    </div>
-                  </div>
-                  <p className="text-lg text-gray-500 font-semibold">
-                    DEMOGRAPHICS
-                  </p>
-                  <div className="grid md:grid-cols-2 gap-x-5 gap-y-4">
-                    <div className="space-y-2">
-                      <div>
-                        <label>Birth Date</label>
-                      </div>
-                      <input
-                        onChange={onChange}
-                        name="firstName"
-                        value={formData.firstName}
-                        className="py-3 px-8 bg-themeGray3 focus:outline-gray-200 w-full"
-                        placeholder={data?.data?.firstName ?? ''}
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <div>
-                        <label>Gender</label>
-                      </div>
-                      <input
-                        onChange={onChange}
-                        name="lastName"
-                        value={formData.lastName}
-                        className="py-3 px-8 bg-themeGray3 focus:outline-gray-200 w-full"
-                        placeholder={data?.data?.lastName ?? ''}
-                      />
-                    </div>
-                  </div>
-                  <div className="flex justify-end">
-                    <div>
-                      <button
-                        onClick={update_profile}
-                        className="bg-themeBlue text-white rounded py-1 px-8 border border-themeBlue hover:text-themeBlue hover:bg-white"
-                      >
-                        Update
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </>
-            )}
+           
+                       
           </>
         )}
       </section>

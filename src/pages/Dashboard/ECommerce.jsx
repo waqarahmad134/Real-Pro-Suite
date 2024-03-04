@@ -5,10 +5,16 @@ import Card from '../../components/homeElements/Card';
 import { BASE_URL } from '../../Utils/urls';
 
 import Loader from '../../components/loader/Loader';
+import { useNavigate } from 'react-router-dom';
 
 const ECommerce = () => {
+  const navigate = useNavigate();
   const { data } = useFetch('dashboard/v1/suiteTools');
   const topApps = useFetch('dashboard/v1/getTopApps');
+  if (!localStorage.getItem('loginStatus')) {
+    navigate('/auth/signin')
+  }
+
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     setTimeout(() => setLoading(false), 1000);
@@ -20,7 +26,7 @@ const ECommerce = () => {
     <DefaultLayout>
       <div>
         <h2 className="text-xl font-semibold">
-          Suite Tools <hr className="border-t-2 my-5" />{' '}
+          Suite Tools <hr className="border-t-2 my-5" />
         </h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5">
           {data?.data?.length > 0

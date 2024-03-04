@@ -102,7 +102,12 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
 
             <ul className="mb-6 flex flex-col gap-1.5">
               {/* <!-- Menu Item Profile --> */}
-              {pathname.includes('profile') ? (
+              {pathname.includes('profile') ||
+              pathname.includes('general-info') ||
+              pathname.includes('contact-info') ||
+              pathname.includes('professional-details') ||
+              pathname.includes('personal-details') ||
+              pathname.includes('awards') ? (
                 <>
                   <li>
                     <NavLink
@@ -176,7 +181,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                   <li>
                     <NavLink
                       to="/"
-                      className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-themeBlue duration-300 ease-in-out hover:bg-[#0068d1] hover:text-white dark:hover:bg-meta-4 ${
+                      className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-themeBlue duration-300 ease-in-out hover:bg-[#0068d1] hover:text-white dark:text-white dark:hover:bg-meta-4 ${
                         pathname.includes('/') && 'bg-themeGray2 dark:bg-meta-4'
                       }`}
                     >
@@ -191,7 +196,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                   <li>
                     <NavLink
                       to="/apps"
-                      className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-themeBlue duration-300 ease-in-out hover:bg-[#0068d1] hover:text-white dark:hover:bg-meta-4 ${
+                      className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-themeBlue duration-300 ease-in-out hover:bg-[#0068d1] hover:text-white dark:text-white dark:hover:bg-meta-4 ${
                         pathname.includes('apps') &&
                         'bg-themeGray2 dark:bg-meta-4'
                       }`}
@@ -208,7 +213,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                   <li>
                     <NavLink
                       to="/news&resources"
-                      className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-themeBlue duration-300 ease-in-out hover:bg-[#0068d1] hover:text-white dark:hover:bg-meta-4 ${
+                      className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-themeBlue duration-300 ease-in-out hover:bg-[#0068d1] hover:text-white dark:text-white dark:hover:bg-meta-4 ${
                         pathname.includes('news&resources') &&
                         'bg-themeGray2 dark:bg-meta-4'
                       }`}
@@ -224,7 +229,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                   <li>
                     <NavLink
                       to="/tools"
-                      className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-themeBlue duration-300 ease-in-out hover:bg-[#0068d1] hover:text-white dark:hover:bg-meta-4 ${
+                      className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-themeBlue duration-300 ease-in-out hover:bg-[#0068d1] hover:text-white dark:text-white dark:hover:bg-meta-4 ${
                         pathname.includes('tools') &&
                         'bg-graydark dark:bg-meta-4'
                       }`}
@@ -240,13 +245,13 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                   <li>
                     <NavLink
                       to="/offices"
-                      className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-themeBlue duration-300 ease-in-out hover:bg-[#0068d1] hover:text-white dark:hover:bg-meta-4 ${
+                      className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-themeBlue duration-300 ease-in-out hover:bg-[#0068d1] hover:text-white dark:text-white dark:hover:bg-meta-4 ${
                         pathname.includes('offices') &&
                         'bg-themeGray2 dark:bg-meta-4'
                       }`}
                     >
                       <img
-                        src="../images/offices.png"
+                        src={'../images/offices.png'}
                         alt=""
                         className="opacity-100 max-w-[28px]"
                       />

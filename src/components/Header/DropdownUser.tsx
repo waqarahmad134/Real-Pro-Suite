@@ -1,9 +1,14 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
-
+import { Link, useNavigate } from 'react-router-dom';
 import UserOne from '../../images/user/user-01.png';
 
 const DropdownUser = () => {
+  const navigate = useNavigate();
+  const logoutAdmin = async () => {
+    localStorage.removeItem('loginstatus');
+    localStorage.removeItem('accessToken');
+    navigate('/auth/signin');
+  };
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const trigger = useRef<any>(null);
@@ -105,9 +110,9 @@ const DropdownUser = () => {
                   <li>Pay Bill</li>
                 </ul>
               </div>
-              <Link to={'/auth/signin'} className="text-blue-600 text-lg">
+              <button onClick={logoutAdmin} className="text-blue-600 text-lg">
                 Logout
-              </Link>
+              </button>
             </div>
           </div>
 

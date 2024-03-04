@@ -15,6 +15,11 @@ import 'primereact/resources/themes/lara-light-cyan/theme.css';
 import Agents from './pages/Agents';
 import Offices from './pages/Offices';
 import News from './pages/News';
+import GeneralInfo from './pages/GeneralInfo';
+import ContactInfo from './pages/ContactInfo';
+import ProfessionalDetails from './pages/ProfessionalDetails';
+import PersonalDetails from './pages/PersonalDetails';
+import Awards from './pages/Awards';
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -100,8 +105,56 @@ function App() {
                 </>
               }
             />
-          
-          
+
+            <Route
+              path="/general-info"
+              element={
+                <>
+                  <PageTitle title="General Info | Real Pro Suite" />
+                  <GeneralInfo />
+                </>
+              }
+            />
+
+            <Route
+              path="/contact-info"
+              element={
+                <>
+                  <PageTitle title="Contact Info | Real Pro Suite" />
+                  <ContactInfo />
+                </>
+              }
+            />
+
+            <Route
+              path="/professional-details"
+              element={
+                <>
+                  <PageTitle title="Professional Details | Real Pro Suite" />
+                  <ProfessionalDetails />
+                </>
+              }
+            />
+
+            <Route
+              path="/personal-details"
+              element={
+                <>
+                  <PageTitle title="Personal Details | Real Pro Suite" />
+                  <PersonalDetails />
+                </>
+              }
+            />
+
+            <Route
+              path="/awards"
+              element={
+                <>
+                  <PageTitle title="Awards | Real Pro Suite" />
+                  <Awards />
+                </>
+              }
+            />
 
             <Route
               path="/auth/signin"
