@@ -5,6 +5,8 @@ import { PostApi } from '../ApiClient/PostApi';
 import { success_toaster } from '../components/toaster/Toaster';
 import DefaultLayout from '../layout/DefaultLayout';
 import { Loader2 } from '../components/loader/Loader';
+import { MdEdit } from 'react-icons/md';
+import { FaPlus } from 'react-icons/fa';
 
 export default function ProfessionalDetails() {
   const [formData, setFormData] = useState({
@@ -109,79 +111,72 @@ export default function ProfessionalDetails() {
         {loading ? (
           <Loader2 />
         ) : (
-          <>
-            <div className="bg-white p-10 space-y-6">
-              <p className="text-lg text-gray-500 font-semibold">
-                NAME & TITLE
-              </p>
-              <div className="grid md:grid-cols-2 gap-x-5 gap-y-4">
-                <div className="space-y-2">
-                  <div>
-                    <label>Name</label>
-                  </div>
-                  <input
-                    onChange={onChange}
-                    name="firstName"
-                    value={formData.firstName}
-                    className="py-3 px-6 bg-themeGray focus:outline-gray-200 w-full"
-                    placeholder={data?.data?.firstName ?? ''}
-                  />
-                </div>
-                <div className="space-y-2">
-                  <div>
-                    <label>Team</label>
-                  </div>
+          <div className="bg-white p-10 space-y-8">
+            <div>
+              <p className="text-lg text-gray-500 font-semibold">Licenses</p>
 
-                  <input
-                    onChange={onChange}
-                    name="lastName"
-                    value={formData.lastName}
-                    className="py-3 px-6 bg-themeGray focus:outline-gray-200 w-full"
-                    placeholder={data?.data?.lastName ?? ''}
-                  />
-                </div>
-              </div>
-              <p className="text-lg text-gray-500 font-semibold">
-                DEMOGRAPHICS
-              </p>
-              <div className="grid md:grid-cols-2 gap-x-5 gap-y-4">
-                <div className="space-y-2">
-                  <div>
-                    <label>Phone</label>
-                  </div>
-                  <input
-                    onChange={onChange}
-                    name="phone"
-                    value={formData.phone}
-                    className="py-3 px-6 bg-themeGray focus:outline-gray-200 w-full"
-                    placeholder={data?.data?.phone ?? ''}
-                  />
-                </div>
-                <div className="space-y-2">
-                  <div>
-                    <label>Email</label>
-                  </div>
-                  <input
-                    onChange={onChange}
-                    name="email"
-                    value={formData.email}
-                    className="py-3 px-6 bg-themeGray focus:outline-gray-200 w-full"
-                    placeholder={data?.data?.email ?? ''}
-                  />
-                </div>
-              </div>
-              <div className="flex justify-end">
-                <div>
-                  <button
-                    onClick={update_profile}
-                    className="bg-themeBlue text-white rounded py-1 px-8 border border-themeBlue hover:text-themeBlue hover:bg-white"
-                  >
-                    Update
-                  </button>
+              <hr className="my-3" />
+              <div className="mt-4">
+                <p>No License info to display</p>
+                <div className="flex items-center gap-x-2 my-4 text-themeGray2">
+                  <FaPlus />
+                  <button>Add</button>
                 </div>
               </div>
             </div>
-          </>
+            <div>
+              <div className="flex justify-between">
+                <p className="text-lg text-gray-500 font-semibold">
+                  Specialties
+                </p>
+                <div className="flex items-center gap-x-2 my-4 text-themeGray2">
+                  <FaPlus />
+                  <button>Add</button>
+                </div>
+              </div>
+              <hr className="my-3" />
+              <div className="mt-4">
+                <p>No Specialties Found</p>
+              </div>
+            </div>
+            <div>
+              <div className="flex justify-between">
+                <p className="text-lg text-gray-500 font-semibold">
+                  Designations
+                </p>
+                <button className="flex items-center gap-x-2">
+                  <MdEdit />
+                  Edit
+                </button>
+              </div>
+              <hr className="my-3" />
+              <div className="mt-4">
+                <p>No designations to display</p>
+              </div>
+            </div>
+            <div>
+              <div className="flex justify-between">
+                <p className="text-lg text-gray-500 font-semibold">
+                  Office Service Area
+                </p>
+              </div>
+              <hr className="my-3" />
+              <div className="flex justify-between items-center mt-4">
+                <p>Gastonia</p>
+                <p>Non-Editable</p>
+              </div>
+            </div>
+            <div className="flex justify-end">
+              <div>
+                <button
+                  onClick={update_profile}
+                  className="bg-themeBlue text-white rounded py-1 px-8 border border-themeBlue hover:text-themeBlue hover:bg-white"
+                >
+                  Update
+                </button>
+              </div>
+            </div>
+          </div>
         )}
       </section>
     </DefaultLayout>

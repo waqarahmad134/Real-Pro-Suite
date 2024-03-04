@@ -6,6 +6,7 @@ import { success_toaster } from '../components/toaster/Toaster';
 import DefaultLayout from '../layout/DefaultLayout';
 import { Loader2 } from '../components/loader/Loader';
 import { MdEdit } from 'react-icons/md';
+import { FaPlus } from 'react-icons/fa';
 
 export default function PersonalDetails() {
   const [formData, setFormData] = useState({
@@ -145,17 +146,30 @@ export default function PersonalDetails() {
               <hr className="my-3" />
               <div className="mt-4">
                 <p>No educational background to display</p>
+                <div className="flex items-center gap-x-2 my-4 text-themeGray2">
+                  <FaPlus />
+                  <button>Add</button>
+                </div>
               </div>
             </div>
             <div>
               <div className="flex justify-between">
                 <p className="text-lg text-gray-500 font-semibold">
                   Civic Activities
+
                 </p>
+                <div className="flex items-center gap-x-2 my-4 text-themeGray2">
+                  <FaPlus />
+                  <button>Add</button>
+                </div>
               </div>
               <hr className="my-3" />
               <div className="mt-4">
                 <p>No Civic activities to display</p>
+                <div className="flex items-center gap-x-2 my-4 text-themeGray2">
+                  <FaPlus />
+                  <button>Add</button>
+                </div>
               </div>
             </div>
             <div>
@@ -165,6 +179,10 @@ export default function PersonalDetails() {
               <hr className="my-3" />
               <div className="mt-4">
                 <p>No Hoobies to display</p>
+                <div className="flex items-center gap-x-2 my-4 text-themeGray2">
+                  <FaPlus />
+                  <button>Add</button>
+                </div>
               </div>
             </div>
             <div>
@@ -179,6 +197,11 @@ export default function PersonalDetails() {
                   Edit
                 </button>
               </div>
+              <hr  className='my-2'/>
+              <div className="flex items-center gap-x-2 my-4 text-themeGray2">
+                  <FaPlus />
+                  <button>Add</button>
+                </div>
             </div>
             <div className="flex justify-end">
               <div>
