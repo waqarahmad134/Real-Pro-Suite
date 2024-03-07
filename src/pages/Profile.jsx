@@ -6,7 +6,7 @@ import DefaultLayout from '../layout/DefaultLayout';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 export default function Profile() {
-  const { data, reFetch } = useFetch('admin_profile');
+  const { data, reFetch } = useFetch('dashboard/v1/getGeneralInfo');
 
   const [formData, setFormData] = useState({
     firstName: '',
@@ -96,23 +96,18 @@ export default function Profile() {
                 <div className="grid md:grid-cols-2 gap-x-5 gap-y-4">
                   <div className="space-y-2">
                     <div>
-                      <h4 className="text-lg">Sandy Mcapline</h4>
+                      <h4 className="text-lg">{data?.data?.firstName} {data?.data?.lastName}</h4>
                       <p className="text-black text-opacity-50">
-                        Remix ID : 10002733
+                        {data?.data?.dateOfBirth}
                       </p>
                     </div>
                     <div>
-                      <h4 className="text-lg">Re/Max Executive</h4>
+                      <h4 className="text-lg capitalize">{data?.data?.gender}</h4>
                       <p className="text-black text-opacity-50">
-                        121 roing road suit{' '}
+                        {data?.data?.firstLicensed}
                       </p>
                     </div>
-                    <div>
-                      <h4 className="text-lg">Re/Max Executive</h4>
-                      <p className="text-black text-opacity-50">
-                        121 roing road suit{' '}
-                      </p>
-                    </div>
+                  
                   </div>
                   <div className="">
                     <img
@@ -122,7 +117,7 @@ export default function Profile() {
                     />
                   </div>
                 </div>
-                <h3 className="text-lg text-gray-500 font-semibold">
+                {/* <h3 className="text-lg text-gray-500 font-semibold">
                   Phone Numbers
                 </h3>
                 <hr />
@@ -154,7 +149,7 @@ export default function Profile() {
                       </p>
                     </div>
                   </div>
-                </div>
+                </div> */}
                 <div className="flex justify-end">
                   <div>
                     <button

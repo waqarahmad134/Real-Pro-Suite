@@ -14,7 +14,7 @@ export default function GeneralInfo() {
     password: '',
     confirmPassword: '',
   });
-  const { data, reFetch } = useFetch('admin_profile');
+  const { data, reFetch } = useFetch('dashboard/v1/getGeneralInfo');
   const [loading, SetLoading] = useState(false);
   const onChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -109,66 +109,83 @@ export default function GeneralInfo() {
           <Loader2 />
         ) : (
           <>
-            <div className="bg-white p-10 space-y-6">
-              <p className="text-lg text-gray-500 font-semibold">
-                NAME & TITLE
-              </p>
-              <div className="grid md:grid-cols-2 gap-x-5 gap-y-4">
+            <div className="bg-white p-10">
+              <h3 className="text-lg text-black text-opacity-50 text-gray-500 font-semibold">
+                Name & Title
+              </h3>
+              <hr className="my-2" />
+              <div className="gap-x-5 gap-y-4">
                 <div className="space-y-2">
                   <div>
-                    <label>Name</label>
+                    <h3 className="text-lg text-gray-500 font-semibold">
+                      Name
+                    </h3>
+                    <h4 className="text-lg">
+                      {data?.data?.firstName} {data?.data?.lastName}
+                    </h4>
                   </div>
-                  <input
-                    onChange={onChange}
-                    name="firstName"
-                    value={formData.firstName}
-                    className="py-3 px-6 bg-themeGray focus:outline-gray-200 w-full"
-                    placeholder={data?.data?.firstName ?? ''}
-                  />
                 </div>
-                <div className="space-y-2">
-                  <div>
-                    <label>Team</label>
-                  </div>
+              </div>
+              <h3 className="text-lg text-black text-opacity-50 text-gray-500 font-semibold mt-8">
+                Demographics
+              </h3>
+              <hr />
+              <div className="space-y-4">
+                <div>
+                  <h3 className="text-lg text-gray-500 font-semibold">
+                    Birth Date
+                  </h3>
+                  <p className="">{data?.data?.dateOfBirth}</p>
+                </div>
+                <div>
+                  <h3 className="text-lg text-gray-500 font-semibold">
+                    Gender
+                  </h3>
+                  <h4 className="text-lg capitalize">{data?.data?.gender}</h4>
+                </div>
+                <div>
+                  <h3 className="text-lg text-gray-500 font-semibold">
+                    First License
+                  </h3>
+                  <h4 className="text-lg capitalize">
+                    {data?.data?.firstLicensed}
+                  </h4>
+                </div>
+              </div>
 
-                  <input
-                    onChange={onChange}
-                    name="lastName"
-                    value={formData.lastName}
-                    className="py-3 px-6 bg-themeGray focus:outline-gray-200 w-full"
-                    placeholder={data?.data?.lastName ?? ''}
-                  />
+              {/* <h3 className="text-lg text-gray-500 font-semibold">
+              Phone Numbers
+            </h3>
+            <hr />
+            <div className="grid md:grid-cols-2 gap-x-5 gap-y-4">
+              <div className="space-y-2">
+                <div>
+                  <p className="text-lg text-black text-opacity-50">
+                    Mobile (Cell) : (704) 746-5638
+                  </p>
+                  <p className="text-lg text-black text-opacity-50">
+                    Main Office : (704) 664-5638
+                  </p>
+                  <p className="text-lg text-black text-opacity-50">
+                    Direct : (383) 1243-5638
+                  </p>
                 </div>
               </div>
-              <p className="text-lg text-gray-500 font-semibold">
-                DEMOGRAPHICS
-              </p>
-              <div className="grid md:grid-cols-2 gap-x-5 gap-y-4">
-                <div className="space-y-2">
-                  <div>
-                    <label>Phone</label>
-                  </div>
-                  <input
-                    onChange={onChange}
-                    name="phone"
-                    value={formData.phone}
-                    className="py-3 px-6 bg-themeGray focus:outline-gray-200 w-full"
-                    placeholder={data?.data?.phone ?? ''}
-                  />
-                </div>
-                <div className="space-y-2">
-                  <div>
-                    <label>Email</label>
-                  </div>
-                  <input
-                    onChange={onChange}
-                    name="email"
-                    value={formData.email}
-                    className="py-3 px-6 bg-themeGray focus:outline-gray-200 w-full"
-                    placeholder={data?.data?.email ?? ''}
-                  />
+            </div>
+            <h3 className="text-lg text-gray-500 font-semibold">Emails</h3>
+            <hr />
+            <div className="grid md:grid-cols-2 gap-x-5 gap-y-4">
+              <div className="space-y-2">
+                <div>
+                  <p className="text-lg text-black text-opacity-50">
+                    mexcy@gmail.com
+                  </p>
+                  <p className="text-lg text-black text-opacity-50">
+                    mexcy.developer@gmail.com
+                  </p>
                 </div>
               </div>
+            </div> */}
               <div className="flex justify-end">
                 <div>
                   <button
