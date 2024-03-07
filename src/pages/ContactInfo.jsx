@@ -15,7 +15,7 @@ export default function ContactInfo() {
     password: '',
     confirmPassword: '',
   });
-  const { data, reFetch } = useFetch('admin_profile');
+  const { data, reFetch } = useFetch('dashboard/v1/getContactInfo');
   const [loading, SetLoading] = useState(false);
   const onChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -110,66 +110,52 @@ export default function ContactInfo() {
           <Loader2 />
         ) : (
           <>
-            <div className="bg-white p-10 space-y-6">
-              <p className="text-lg text-gray-500 font-semibold">
-                NAME & TITLE
-              </p>
+            <div className="bg-white p-10">
+              <h3 className="text-lg text-gray-500 font-semibold">Emails</h3>
+              <hr className="my-2" />
               <div className="grid md:grid-cols-2 gap-x-5 gap-y-4">
                 <div className="space-y-2">
                   <div>
-                    <label>Name</label>
+                    <p className="text-lg text-black text-opacity-50">
+                      {data?.data?.email}
+                    </p>
+                    <p className="text-lg text-black text-opacity-50">
+                      {data?.data?.ISPemail}
+                    </p>
                   </div>
-                  <input
-                    onChange={onChange}
-                    name="firstName"
-                    value={formData.firstName}
-                    className="py-3 px-6 bg-themeGray focus:outline-gray-200 w-full"
-                    placeholder={data?.data?.firstName ?? ''}
-                  />
                 </div>
+              </div>
+              <h3 className="text-lg text-gray-500 font-semibold mt-5">
+                Web and Social Media Sites
+              </h3>
+              <hr className="my-2" />
+              <div className="grid md:grid-cols-2 gap-x-5 gap-y-4">
                 <div className="space-y-2">
                   <div>
-                    <label>Team</label>
+                  {data?.data?.links?.map((link, index) => (
+                      <p key={index} className="text-lg text-black text-opacity-50 capitalize">
+                        {link?.platform} : {link?.url}
+                      </p>
+                    ))}
                   </div>
+                </div>
+              </div>
+              <h3 className="text-lg text-gray-500 font-semibold mt-5">
+                Phone Numbers
+              </h3>
+              <hr className="my-2" />
+              <div className="grid md:grid-cols-2 gap-x-5 gap-y-4">
+                <div className="space-y-2">
+                  <div>
+                    {data?.data?.phoneNumbers?.map((data, index) => (
+                      <p key={index} className="text-lg text-black text-opacity-50 capitalize">
+                        {data?.type} : {data?.countryCode}-{data?.phoneNum}
+                      </p>
+                    ))}
+                  </div>
+                </div>
+              </div>
 
-                  <input
-                    onChange={onChange}
-                    name="lastName"
-                    value={formData.lastName}
-                    className="py-3 px-6 bg-themeGray focus:outline-gray-200 w-full"
-                    placeholder={data?.data?.lastName ?? ''}
-                  />
-                </div>
-              </div>
-              <p className="text-lg text-gray-500 font-semibold">
-                DEMOGRAPHICS
-              </p>
-              <div className="grid md:grid-cols-2 gap-x-5 gap-y-4">
-                <div className="space-y-2">
-                  <div>
-                    <label>Phone</label>
-                  </div>
-                  <input
-                    onChange={onChange}
-                    name="phone"
-                    value={formData.phone}
-                    className="py-3 px-6 bg-themeGray focus:outline-gray-200 w-full"
-                    placeholder={data?.data?.phone ?? ''}
-                  />
-                </div>
-                <div className="space-y-2">
-                  <div>
-                    <label>Email</label>
-                  </div>
-                  <input
-                    onChange={onChange}
-                    name="email"
-                    value={formData.email}
-                    className="py-3 px-6 bg-themeGray focus:outline-gray-200 w-full"
-                    placeholder={data?.data?.email ?? ''}
-                  />
-                </div>
-              </div>
               <div className="flex justify-end">
                 <div>
                   <button
