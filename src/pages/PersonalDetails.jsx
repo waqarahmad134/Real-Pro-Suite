@@ -18,7 +18,7 @@ export default function PersonalDetails() {
     password: '',
     confirmPassword: '',
   });
-  const { data, reFetch } = useFetch('admin_profile');
+  const { data, reFetch } = useFetch('dashboard/v1/getPersonalDetails');
   const [loading, SetLoading] = useState(false);
   const onChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -125,17 +125,7 @@ export default function PersonalDetails() {
               </div>
               <hr className="my-3" />
               <div className="mt-4">
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse
-                  asperiores quaerat exercitationem rerum impedit iste
-                  voluptatum obcaecati earum neque quas necessitatibus
-                  voluptatibus tempore, cumque ullam voluptate iusto sequi
-                  aliquam minus in. Ex, quidem sunt, deleniti minus tempore
-                  suscipit placeat quos ipsa autem iste dicta nemo, nam officia!
-                  Officia similique libero expedita incidunt consequuntur,
-                  molestias quasi? Asperiores quas doloribus animi voluptatem
-                  reiciendis quidem cumque amet, excepturi iusto.
-                </p>
+                <p>{data?.data?.bio}</p>
               </div>
             </div>
             <div>
@@ -146,7 +136,16 @@ export default function PersonalDetails() {
               </div>
               <hr className="my-3" />
               <div className="mt-4">
-                <p>No educational background to display</p>
+                {data?.data?.education && data.data.education.length > 0 ? (
+                  data.data.education.map((education, index) => (
+                    <p className="capitalize" key={index}>
+                      {education?.name}
+                    </p>
+                  ))
+                ) : (
+                  <p>No educational background to display</p>
+                )}
+
                 <div className="flex items-center gap-x-2 my-4 text-themeGray2">
                   <FaPlus />
                   <button>Add</button>
@@ -165,7 +164,17 @@ export default function PersonalDetails() {
               </div>
               <hr className="my-3" />
               <div className="mt-4">
-                <p>No Civic activities to display</p>
+                {data?.data?.civicActivities &&
+                data.data.civicActivities.length > 0 ? (
+                  data.data.civicActivities.map((activity, index) => (
+                    <p className="capitalize" key={index}>
+                      {activity?.name}
+                    </p>
+                  ))
+                ) : (
+                  <p>No civic activities to display</p>
+                )}
+
                 <div className="flex items-center gap-x-2 my-4 text-themeGray2">
                   <FaPlus />
                   <button>Add</button>
@@ -178,7 +187,16 @@ export default function PersonalDetails() {
               </div>
               <hr className="my-3" />
               <div className="mt-4">
-                <p>No Hoobies to display</p>
+                {data?.data?.hobbies && data.data.hobbies.length > 0 ? (
+                  data.data.hobbies.map((hobbie, index) => (
+                    <p className="capitalize" key={index}>
+                      {hobbie?.name}
+                    </p>
+                  ))
+                ) : (
+                  <p>No hobbies activities to display</p>
+                )}
+
                 <div className="flex items-center gap-x-2 my-4 text-themeGray2">
                   <FaPlus />
                   <button>Add</button>
@@ -191,7 +209,15 @@ export default function PersonalDetails() {
               </div>
               <hr className="my-3" />
               <div className="flex justify-between items-center mt-4">
-                <p>English (1)</p>
+                {data?.data?.languages && data.data.languages.length > 0 ? (
+                  data.data.languages.map((language, index) => (
+                    <p className="capitalize" key={index}>
+                      {language?.name}
+                    </p>
+                  ))
+                ) : (
+                  <p>No language to display</p>
+                )}
                 <button className="flex items-center gap-x-2">
                   <MdEdit />
                   Edit
