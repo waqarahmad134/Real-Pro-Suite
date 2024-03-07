@@ -17,7 +17,8 @@ export default function ProfessionalDetails() {
     password: '',
     confirmPassword: '',
   });
-  const { data, reFetch } = useFetch('admin_profile');
+  const { data, reFetch } = useFetch('/dashboard/v1/getProfessionalDetails');
+  console.log('🚀 ~ ProfessionalDetails ~ data:', data?.data);
   const [loading, SetLoading] = useState(false);
   const onChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -114,10 +115,18 @@ export default function ProfessionalDetails() {
           <div className="bg-white p-10 space-y-8">
             <div>
               <p className="text-lg text-gray-500 font-semibold">Licenses</p>
-
               <hr className="my-3" />
               <div className="mt-4">
-                <p>No License info to display</p>
+                {data?.data?.licenses && data.data.licenses.length > 0 ? (
+                  data.data.licenses.map((license, index) => (
+                    <p className="capitalize" key={index}>
+                      {license?.name}
+                    </p>
+                  ))
+                ) : (
+                  <p>No License info to display</p>
+                )}
+
                 <div className="flex items-center gap-x-2 my-4 text-themeGray2">
                   <FaPlus />
                   <button>Add</button>
@@ -125,18 +134,28 @@ export default function ProfessionalDetails() {
               </div>
             </div>
             <div>
-              <div className="flex justify-between">
+              <div className="flex justify-between items-center">
                 <p className="text-lg text-gray-500 font-semibold">
                   Specialties
                 </p>
-                <div className="flex items-center gap-x-2 my-4 text-themeGray2">
+                <div className="flex items-center gap-x-2 my-2 text-themeGray2">
                   <FaPlus />
                   <button>Add</button>
                 </div>
               </div>
               <hr className="my-3" />
-              <div className="mt-4">
-                <p>No Specialties Found</p>
+              <div>
+                {data?.data?.specialties && data.data.specialties.length > 0 ? (
+                  data.data.specialties.map((specialty, index) => (
+                    <p className="capitalize" key={index}>
+                      {specialty?.name}
+                    </p>
+                  ))
+                ) : (
+                  <div className="mt-4">
+                    <p>No Specialties Found</p>
+                  </div>
+                )}
               </div>
             </div>
             <div>
@@ -150,8 +169,19 @@ export default function ProfessionalDetails() {
                 </button>
               </div>
               <hr className="my-3" />
-              <div className="mt-4">
-                <p>No designations to display</p>
+              <div>
+                {data?.data?.designations &&
+                data.data.designations.length > 0 ? (
+                  data.data.designations.map((designation, index) => (
+                    <p className="capitalize" key={index}>
+                      {designation?.name}
+                    </p>
+                  ))
+                ) : (
+                  <div className="mt-4">
+                    <p>No Designations Found</p>
+                  </div>
+                )}
               </div>
             </div>
             <div>
