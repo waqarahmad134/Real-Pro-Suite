@@ -9,6 +9,7 @@ import { MdEdit } from 'react-icons/md';
 import { FaPlus } from 'react-icons/fa';
 
 export default function PersonalDetails() {
+  const get = [];
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -156,7 +157,6 @@ export default function PersonalDetails() {
               <div className="flex justify-between">
                 <p className="text-lg text-gray-500 font-semibold">
                   Civic Activities
-
                 </p>
                 <div className="flex items-center gap-x-2 my-4 text-themeGray2">
                   <FaPlus />
@@ -197,11 +197,11 @@ export default function PersonalDetails() {
                   Edit
                 </button>
               </div>
-              <hr  className='my-2'/>
+              <hr className="my-2" />
               <div className="flex items-center gap-x-2 my-4 text-themeGray2">
-                  <FaPlus />
-                  <button>Add</button>
-                </div>
+                <FaPlus />
+                <button>Add</button>
+              </div>
             </div>
             <div className="flex justify-end">
               <div>
