@@ -73,7 +73,7 @@ function App() {
               path="/profile"
               element={
                 <>
-                  <PageTitle title="Profile | Real Pro Suite" />
+                  <PageTitle title="Profile N | Real Pro Suite" />
                   <Profile />
                 </>
               }
