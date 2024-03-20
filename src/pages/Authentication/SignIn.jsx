@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
-import { error_toaster, success_toaster } from '../../components/toaster/Toaster';
+import {
+  error_toaster,
+  success_toaster,
+} from '../../components/toaster/Toaster';
 import { Loader2 } from '../../components/loader/Loader';
 import { PostApi } from '../../ApiClient/PostApi';
 
@@ -25,11 +28,13 @@ const SignIn = () => {
         email: data.email,
         password: data.password,
       });
-
+      console.log(res?.data);
       if (res?.data?.status === '1') {
         setLoading(false);
         localStorage.setItem('loginStatus', true);
         localStorage.setItem('accessToken', res.data.data.accessToken);
+        localStorage.setItem('userId', res.data.data.id);
+        localStorage.setItem('roleId', res.data.data.role?.id);
         localStorage.setItem(
           'permissions',
           JSON.stringify(res?.data?.data?.role?.rolePermissions),

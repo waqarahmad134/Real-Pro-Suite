@@ -7,6 +7,9 @@ const DropdownUser = () => {
   const logoutAdmin = async () => {
     localStorage.removeItem('loginstatus');
     localStorage.removeItem('accessToken');
+    localStorage.removeItem('userId');
+    localStorage.removeItem('loginStatus');
+    localStorage.removeItem('permissions');
     navigate('/auth/signin');
   };
   const [dropdownOpen, setDropdownOpen] = useState(false);

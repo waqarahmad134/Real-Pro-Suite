@@ -6,14 +6,28 @@ import { BASE_URL } from '../../Utils/urls';
 
 import Loader from '../../components/loader/Loader';
 import { useNavigate } from 'react-router-dom';
+import { success_toaster } from '../../components/toaster/Toaster';
+import { PostApi } from '../../ApiClient/PostApi';
 
 const ECommerce = () => {
   const navigate = useNavigate();
-  const { data } = useFetch('dashboard/v1/suiteTools');
+  const { data , reFetch } = useFetch('dashboard/v1/suiteTools');
   const topApps = useFetch('dashboard/v1/getTopApps');
   if (!localStorage.getItem('loginStatus')) {
-    navigate('/auth/signin')
+    navigate('/auth/signin');
   }
+
+  const handleFavFunc = async (id) => {
+    const res = await PostApi('dashboard/v1/removeTopApp', {
+      appId: id,
+    });
+    if (res?.data?.status === '1') {
+      success_toaster(res.data.message);
+      topApps.reFetch();
+    } else {
+      error_toaster(res.data.message);
+    }
+  };
 
   const [loading, setLoading] = useState(true);
   useEffect(() => {
@@ -33,14 +47,16 @@ const ECommerce = () => {
             ? data?.data?.map((app, index) => (
                 <Card
                   key={index}
-                  title={app.appName}
+                  title={app?.appName}
                   icon={
                     app?.logo === null
                       ? 'https://source.unsplash.com/500x500/?logos'
                       : `${BASE_URL}${app?.logo}`
                   }
-                  location={app.appUrl}
+                  location={app?.appUrl}
                   alt={index}
+                  bookmark={false}
+                  removeBookmark={false}
                 />
               ))
             : ''}
@@ -54,14 +70,17 @@ const ECommerce = () => {
             ? topApps?.data?.data?.map((app, index) => (
                 <Card
                   key={index}
-                  title={app.appName}
+                  title={app?.appName}
                   icon={
                     app?.logo === null
                       ? 'https://source.unsplash.com/500x500/?logos'
                       : `${BASE_URL}${app?.logo}`
                   }
-                  location={app.appUrl}
+                  location={app?.appUrl}
                   alt={index}
+                  bookmark={false}
+                  removeBookmark={true}
+                  onclick={() => handleFavFunc(app?.id)}
                 />
               ))
             : ''}
