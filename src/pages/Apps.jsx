@@ -78,7 +78,7 @@ const Apps = () => {
       formData.append('appUrl', addApp.appUrl);
       formData.append('logo', addApp.logo);
       let res = await PostApi('dashboard/v1/addApp', formData);
-
+      console.log(formData);
       if (res?.data?.status === '1') {
         success_toaster(res?.data?.message);
         setAddApp({
