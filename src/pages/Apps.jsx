@@ -184,7 +184,7 @@ const Apps = () => {
                 location={app.appUrl}
                 alt={index}
                 id={app?.id}
-                bookmark={true}
+                bookmark={app.topApp}
                 removeBookmark={false}
                 acceptRemoveApp={true}
                 onclick={() => handleFavFunc(app?.id)}

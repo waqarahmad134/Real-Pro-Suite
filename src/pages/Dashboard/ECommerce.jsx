@@ -55,7 +55,6 @@ const ECommerce = () => {
                   }
                   location={app?.appUrl}
                   alt={index}
-                  bookmark={false}
                   removeBookmark={false}
                 />
               ))
@@ -78,8 +77,7 @@ const ECommerce = () => {
                   }
                   location={app?.appUrl}
                   alt={index}
-                  bookmark={false}
-                  removeBookmark={true}
+                  bookmark={true}
                   onclick={() => handleFavFunc(app?.id)}
                 />
               ))

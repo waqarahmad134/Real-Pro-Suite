@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { CiBookmark, CiTrash } from 'react-icons/ci';
+import { FaBookmark } from 'react-icons/fa';
 import { GoBookmarkSlash } from 'react-icons/go';
 
 export default function Card(props) {
@@ -22,12 +23,17 @@ export default function Card(props) {
               onClick={props.onclick}
               className="flex justify-end cursor-pointer"
             >
+              <FaBookmark className="text-gray-500" />
+            </button>
+          ) :!props.bookmark?'' : (
+            <button
+              onClick={props.onclick}
+              className="flex justify-end cursor-pointer"
+            >
               <CiBookmark />
             </button>
-          ) : (
-            ''
-          )}
-          {props.removeBookmark === true ? (
+          ) }
+          {/* {props.removeBookmark === true ? (
             <button
               onClick={props.onclick}
               className="flex justify-end cursor-pointer"
@@ -36,9 +42,10 @@ export default function Card(props) {
             </button>
           ) : (
             ''
-          )}
-          
-          {localStorage.getItem('roleId') === '1' & props.acceptRemoveApp === true ? (
+          )} */}
+
+          {(localStorage.getItem('roleId') === '1') &
+          (props.acceptRemoveApp === true) ? (
             <button
               onClick={props.removeApp}
               className="flex justify-end cursor-pointer"
