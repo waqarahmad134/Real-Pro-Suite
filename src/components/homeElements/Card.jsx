@@ -25,7 +25,7 @@ export default function Card(props) {
             >
               <FaBookmark className="text-gray-500" />
             </button>
-          ) :!props.bookmark?'' : (
+          ) :props.suite === true?'' : (
             <button
               onClick={props.onclick}
               className="flex justify-end cursor-pointer"

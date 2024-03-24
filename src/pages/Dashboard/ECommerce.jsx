@@ -55,6 +55,7 @@ const ECommerce = () => {
                   }
                   location={app?.appUrl}
                   alt={index}
+                  suite={true}
                   removeBookmark={false}
                 />
               ))
