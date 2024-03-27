@@ -6,6 +6,7 @@ import { PostApi } from '../ApiClient/PostApi';
 import { error_toaster, success_toaster } from '../components/toaster/Toaster';
 import DefaultLayout from '../layout/DefaultLayout';
 import Loader, { Loader2 } from '../components/loader/Loader';
+import SearchBox from '../components/SearchBox/SearchBox';
 import {
   Modal,
   ModalOverlay,
@@ -19,36 +20,19 @@ import {
 } from '@chakra-ui/react';
 
 export default function Agents() {
-  const { data,reFetch } = useFetch('dashboard/v1/allAgents');
-  const [nodes, setNodes] = useState([]);
-  useEffect(() => {
-    if (data && data.data) {
-      const agents = data.data;
-      const formattedNodes = agents.map((agent) => ({
-        data: {
-          firstname: agent.firstName,
-          lastname: agent.lastName,
-          email: agent.email,
-          officename: agent.office.officeName,
-          role: agent.role.name,
-        },
-      }));
-      setNodes(formattedNodes);
-    }
-  }, [data]);
-
+  const { data, reFetch } = useFetch('dashboard/v1/allAgents');
   const offices = useFetch('dashboard/v1/allOffices');
-
-
   const roles = useFetch('dashboard/v1/getroles');
- 
+
+  const [nodes, setNodes] = useState([]);
+  const [model, setModel] = useState(false);
+  const [searchField, setSearchField] = useState('');
+  const [filter, setFilter] = useState('lastName');
 
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     setTimeout(() => setLoading(false), 1000);
   }, []);
-
-  const [model, setModel] = useState(false);
 
   const [agentData, setAgentData] = useState({
     nickName: '',
@@ -59,8 +43,47 @@ export default function Agents() {
     DOB: '',
     gender: '',
     officeId: '', // Assuming a default value for officeId
-    roleId:''
+    roleId: '',
   });
+
+  
+  const onSearchChange = (event) => {
+    const searchField = event.target.value.toLowerCase();
+    setSearchField(searchField);
+  };
+
+  const onFilterChange = (event) => {
+    const filter = event.target.value;
+    setFilter(filter);
+  };
+  
+  const filteredAgents = searchField === ''
+  ? data?.data
+  : filter === 'lastName'
+    ? data?.data?.filter((agent) => agent.lastName.toLowerCase().includes(searchField))
+    : filter === 'firstName'
+      ? data?.data?.filter((agent) => agent.firstName.toLowerCase().includes(searchField))
+      : filter === 'officeName'
+        ? data?.data?.filter((agent) => agent.office.officeName.toLowerCase().includes(searchField))
+        : filter === 'role'
+          ? data?.data?.filter((agent) => agent.role.name.toLowerCase().includes(searchField))
+          : data?.data;
+
+  useEffect(() => {
+    if (filteredAgents) {
+      const formattedNodes = filteredAgents.map((agent) => ({
+        data: {
+          firstname: agent.firstName,
+          lastname: agent.lastName,
+          email: agent.email,
+          officename: agent.office.officeName,
+          role: agent.role.name,
+        },
+      }));
+      setNodes(formattedNodes);
+    }
+  }, [filteredAgents]);
+
 
   const onChange = (e) => {
     setAgentData({ ...agentData, [e.target.name]: e.target.value });
@@ -99,7 +122,7 @@ export default function Agents() {
           DOB: '',
           gender: '',
           officeId: '', // Resetting officeId to default value
-          roleId:''
+          roleId: '',
         });
         reFetch();
         setModel(false);
@@ -141,7 +164,7 @@ export default function Agents() {
                   id="firstName"
                   required
                 />
-                               <label
+                <label
                   htmlFor="nickName"
                   className="block font-bold text-slate-400"
                 >
@@ -158,7 +181,7 @@ export default function Agents() {
                 />
               </div>
               <div className="space-y-4">
-              <label
+                <label
                   htmlFor="lastName"
                   className="block font-bold text-slate-400"
                 >
@@ -301,7 +324,28 @@ export default function Agents() {
         </ModalContent>
       </Modal>
       <div className="flex justify-between items-center">
-        <h2 className="text-xl font-semibold my-5">All Agents</h2>
+      <div className="flex justify-center sm:col-span-2 space-x-2 items-center">
+  <select
+    value={filter}
+    onChange={onFilterChange}
+    className="w-1/2 p-2 border border-gray-300 rounded-md"
+    name="filter"
+    id="filter"
+    required
+  >
+    <option value="lastName">Last Name</option>
+    <option value="firstName">First Name</option>
+    <option value="officeName">Office Name</option>
+    <option value="role">Role</option>
+  </select>
+  <SearchBox
+    onChangeHandler={onSearchChange}
+    placeholder={`Search by ${filter}`}
+    style={{ width: '50%', padding: '0.5rem', border: '1px solid #ccc', borderRadius: '0.25rem' }}
+  />
+</div>
+
+
         {localStorage.getItem('roleId') === '1' ? (
           <Button className="my-5" onClick={() => setModel(true)}>
             Add New Agent
