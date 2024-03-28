@@ -232,8 +232,8 @@ export default function Offices() {
                   required
                 />
               </div> */}
-              <div className="flex justify-center sm:col-span-2">
-                <Button type="submit">Submit</Button>
+              <div className="flex sm:col-span-2">
+                <Button  type="submit">Submit</Button>
               </div>
             </form>
           </ModalBody>
