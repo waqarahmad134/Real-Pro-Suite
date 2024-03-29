@@ -212,28 +212,8 @@ export default function Offices() {
                   required
                 />
               </div>
-              {/* <div className="space-y-4">
-                <Input
-                  value={addOffice.complianceWithFranchiseStandards}
-                  onChange={onChange}
-                  type="checkbox"
-                  className="w-full"
-                  name="complianceWithFranchiseStandards"
-                  placeholder="Compliance With Franchise Standards"
-                  required
-                />
-                <Input
-                  value={addOffice.franchiseNetwork}
-                  onChange={onChange}
-                  type="checkbox"
-                  className="w-full"
-                  name="franchiseNetwork"
-                  placeholder="franchiseNetwork"
-                  required
-                />
-              </div> */}
               <div className="flex sm:col-span-2">
-                <Button  type="submit">Submit</Button>
+                <Button type="submit">Submit</Button>
               </div>
             </form>
           </ModalBody>
