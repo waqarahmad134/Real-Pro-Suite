@@ -6,7 +6,9 @@ import { PostApi } from '../ApiClient/PostApi';
 import { error_toaster, success_toaster } from '../components/toaster/Toaster';
 import DefaultLayout from '../layout/DefaultLayout';
 import Loader, { Loader2 } from '../components/loader/Loader';
+import { Link, useNavigate } from 'react-router-dom';
 import SearchBox from '../components/SearchBox/SearchBox';
+
 import {
   Modal,
   ModalOverlay,
@@ -20,6 +22,10 @@ import {
 } from '@chakra-ui/react';
 
 export default function Agents() {
+const navigate = useNavigate();
+const logoutAdmin = async () => {
+  navigate('/agentDetails');
+};
   const { data, reFetch } = useFetch('dashboard/v1/allAgents');
   const offices = useFetch('dashboard/v1/allOffices');
   const roles = useFetch('dashboard/v1/getroles');
@@ -46,7 +52,6 @@ export default function Agents() {
     roleId: '',
   });
 
-  
   const onSearchChange = (event) => {
     const searchField = event.target.value.toLowerCase();
     setSearchField(searchField);
@@ -56,18 +61,27 @@ export default function Agents() {
     const filter = event.target.value;
     setFilter(filter);
   };
-  
-  const filteredAgents = searchField === ''
-  ? data?.data
-  : filter === 'lastName'
-    ? data?.data?.filter((agent) => agent.lastName.toLowerCase().includes(searchField))
-    : filter === 'firstName'
-      ? data?.data?.filter((agent) => agent.firstName.toLowerCase().includes(searchField))
+
+  const filteredAgents =
+    searchField === ''
+      ? data?.data
+      : filter === 'lastName'
+      ? data?.data?.filter((agent) =>
+          agent.lastName.toLowerCase().includes(searchField),
+        )
+      : filter === 'firstName'
+      ? data?.data?.filter((agent) =>
+          agent.firstName.toLowerCase().includes(searchField),
+        )
       : filter === 'officeName'
-        ? data?.data?.filter((agent) => agent.office.officeName.toLowerCase().includes(searchField))
-        : filter === 'role'
-          ? data?.data?.filter((agent) => agent.role.name.toLowerCase().includes(searchField))
-          : data?.data;
+      ? data?.data?.filter((agent) =>
+          agent.office.officeName.toLowerCase().includes(searchField),
+        )
+      : filter === 'role'
+      ? data?.data?.filter((agent) =>
+          agent.role.name.toLowerCase().includes(searchField),
+        )
+      : data?.data;
 
   useEffect(() => {
     if (filteredAgents) {
@@ -83,7 +97,6 @@ export default function Agents() {
       setNodes(formattedNodes);
     }
   }, [filteredAgents]);
-
 
   const onChange = (e) => {
     setAgentData({ ...agentData, [e.target.name]: e.target.value });
@@ -324,27 +337,31 @@ export default function Agents() {
         </ModalContent>
       </Modal>
       <div className="flex justify-between items-center">
-      <div className="flex justify-center sm:col-span-2 space-x-2 items-center">
-  <select
-    value={filter}
-    onChange={onFilterChange}
-    className="w-1/2 p-2 border border-gray-300 rounded-md"
-    name="filter"
-    id="filter"
-    required
-  >
-    <option value="lastName">Last Name</option>
-    <option value="firstName">First Name</option>
-    <option value="officeName">Office Name</option>
-    <option value="role">Role</option>
-  </select>
-  <SearchBox
-    onChangeHandler={onSearchChange}
-    placeholder={`Search by ${filter}`}
-    style={{ width: '50%', padding: '0.5rem', border: '1px solid #ccc', borderRadius: '0.25rem' }}
-  />
-</div>
-
+        <div className="flex justify-center sm:col-span-2 space-x-2 items-center">
+          <select
+            value={filter}
+            onChange={onFilterChange}
+            className="w-1/2 p-2 border border-gray-300 rounded-md"
+            name="filter"
+            id="filter"
+            required
+          >
+            <option value="lastName">Last Name</option>
+            <option value="firstName">First Name</option>
+            <option value="officeName">Office Name</option>
+            <option value="role">Role</option>
+          </select>
+          <SearchBox
+            onChangeHandler={onSearchChange}
+            placeholder={`Search by ${filter}`}
+            style={{
+              width: '50%',
+              padding: '0.5rem',
+              border: '1px solid #ccc',
+              borderRadius: '0.25rem',
+            }}
+          />
+        </div>
 
         {localStorage.getItem('roleId') === '1' ? (
           <Button className="my-5" onClick={() => setModel(true)}>
@@ -368,6 +385,11 @@ export default function Agents() {
           <Column field="email" header="Email"></Column>
           <Column field="officename" header="Office Name"></Column>
           <Column field="role" header="Role"></Column>
+          <Column
+            body={(node) => (
+              <Button onClick={logoutAdmin}>Details</Button>
+            )}
+          />
         </TreeTable>
       </div>
     </DefaultLayout>

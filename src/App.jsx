@@ -20,6 +20,7 @@ import ContactInfo from './pages/ContactInfo';
 import ProfessionalDetails from './pages/ProfessionalDetails';
 import PersonalDetails from './pages/PersonalDetails';
 import Awards from './pages/Awards';
+import AgentDetails from './pages/AgentDetails'
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -100,7 +101,7 @@ function App() {
               path="/news&resources"
               element={
                 <>
-                  <PageTitle title="Offices | Real Pro Suite" />
+                  <PageTitle title="Academy | Real Pro Suite" />
                   <News />
                 </>
               }
@@ -155,7 +156,15 @@ function App() {
                 </>
               }
             />
-
+            <Route
+              path="/agentDetails"
+              element={
+                <>
+                  <PageTitle title="AgentDetails | Real Pro Suite" />
+                  <AgentDetails />
+                </>
+              }
+            />
             <Route
               path="/auth/signin"
               element={
