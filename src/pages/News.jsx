@@ -74,6 +74,7 @@ export default function News() {
       error_toaster(res.data.message);
     }
   };
+
   return loading ? (
     <Loader />
   ) : (
@@ -182,18 +183,20 @@ export default function News() {
       </div>
       <div className="my-15">
         {filteredVideos.map((data, index) => (
-          <NewsCard
-            key={index}
-            thumbnail={`${BASE_URL}${data.thumbnailUrl}`}
-            video={`${BASE_URL}${data.videoUrl}`}
-            title={data?.title}
-            order="order-2"
-            desc={data?.description}
-            category={data?.category}
-            pinned={data?.pinned}
-            onclick={() => handleFavFunc(data?.id)}
-            removeVideo={() => removeVideo(data?.id)}
-          />
+          <>
+            <NewsCard
+              key={index}
+              thumbnail={`${BASE_URL}${data?.thumbnailUrl}`}
+              video={`${BASE_URL}${data?.videoUrl}`}
+              title={data?.title}
+              order="order-2"
+              desc={data?.description}
+              category={data?.category}
+              pinned={data?.pinned}
+              onclick={() => handleFavFunc(data?.id)}
+              removeVideo={() => removeVideo(data?.id)}
+            />
+          </>
         ))}
         {/* <div className="grid grid-cols-2 gap-3 my-5">
           <NewsCard

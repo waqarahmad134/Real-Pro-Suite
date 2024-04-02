@@ -13,6 +13,7 @@ export default function NewsCard(props) {
   const handleMouseLeave = () => {
     setShowThumbnail(true);
   };
+
   return (
     <div className="bg-white rounded-lg p-5 m-5">
       <div className="grid grid-cols-2">
@@ -21,8 +22,8 @@ export default function NewsCard(props) {
   <div className="absolute inset-0" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
     {showThumbnail ? (
       <img
-        className="w-full h-full object-cover rounded-lg"
-        src={props.thumbnail}
+        className="w-full h-full object-contain rounded-lg"
+        src={props?.thumbnail}
         alt="Thumbnail"
       />
     ) : (

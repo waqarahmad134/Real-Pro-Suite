@@ -22,10 +22,10 @@ import {
 } from '@chakra-ui/react';
 
 export default function Agents() {
-const navigate = useNavigate();
-const logoutAdmin = async () => {
-  navigate('/agentDetails');
-};
+  const navigate = useNavigate();
+  const AgentDetail = async (id) => {
+    navigate('/agentDetails');
+  };
   const { data, reFetch } = useFetch('dashboard/v1/allAgents');
   const offices = useFetch('dashboard/v1/allOffices');
   const roles = useFetch('dashboard/v1/getroles');
@@ -87,6 +87,7 @@ const logoutAdmin = async () => {
     if (filteredAgents) {
       const formattedNodes = filteredAgents.map((agent) => ({
         data: {
+          id: agent.id,
           firstname: agent.firstName,
           lastname: agent.lastName,
           email: agent.email,
@@ -387,7 +388,7 @@ const logoutAdmin = async () => {
           <Column field="role" header="Role"></Column>
           <Column
             body={(node) => (
-              <Button onClick={logoutAdmin}>Details</Button>
+              <Button onClick={() => AgentDetail(node.id)}>Details</Button>
             )}
           />
         </TreeTable>
