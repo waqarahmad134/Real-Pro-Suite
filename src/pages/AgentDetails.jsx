@@ -2,15 +2,18 @@ import React, { useEffect, useState } from 'react';
 import DefaultLayout from '../layout/DefaultLayout';
 import { Loader2 } from '../components/loader/Loader';
 import useFetch from '../ApiClient/GetApi';
+import { useLocation, useParams } from 'react-router-dom';
 
-export default function AgentDetails({id}) {
-  const { data, reFetch } = useFetch(`dashboard/v1/agentDetails?agentId=${id}`);
+export default function AgentDetails() {
+  const location = useLocation();
+  const { data, reFetch } = useFetch(
+    `dashboard/v1/agentDetails?agentId=${location?.state?.agentId}`,
+  );
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     setTimeout(() => setLoading(false), 1000);
   }, []);
 
-  console.log(data?.data?.links);
   return (
     <DefaultLayout>
       <section className="space-y-5">
@@ -193,20 +196,25 @@ export default function AgentDetails({id}) {
                   </p>
                 </div>
                 <div className="mt-10 items-center">
-                  <div className="mt-4 flex flex-wrap items-center justify-between">
-                    <p className="font-semibold text-black text-opacity-50 text-gray-500 mr-12 pr-6">
-                      Degree
-                    </p>
-                    <p className="font-semibold text-black text-opacity-50 text-gray-500 mr-12 pr-6">
-                      Institution
-                    </p>
-                    <p className="font-semibold text-black text-opacity-50 text-gray-500 mr-12 pr-6">
-                      Start Date
-                    </p>
-                    <p className="font-semibold text-black text-opacity-50 text-gray-500 mr-12 pr-6">
-                      Completion Date
-                    </p>
-                  </div>
+                  {data?.data?.civicActivities &&
+                  data.data.civicActivities.length > 0 ? (
+                    <div className="mt-4 flex flex-wrap items-center justify-between">
+                      <p className="font-semibold text-black text-opacity-50 text-gray-500 mr-12 pr-6">
+                        Degree
+                      </p>
+                      <p className="font-semibold text-black text-opacity-50 text-gray-500 mr-12 pr-6">
+                        Institution
+                      </p>
+                      <p className="font-semibold text-black text-opacity-50 text-gray-500 mr-12 pr-6">
+                        Start Date
+                      </p>
+                      <p className="font-semibold text-black text-opacity-50 text-gray-500 mr-12 pr-6">
+                        Completion Date
+                      </p>
+                    </div>
+                  ) : (
+                    ''
+                  )}
                   {data?.data?.education && data.data.education.length > 0 ? (
                     data.data.education.map((education, index) => (
                       <div
@@ -343,15 +351,12 @@ export default function AgentDetails({id}) {
                   <p className="text-lg text-gray-500 font-semibold">Awards</p>
                 </div>
                 <div className="mt-4">
-                  {data?.data?.professionalDetail?.awards &&
-                  data.data.professionalDetail.awards.length > 0 ? (
-                    data?.data?.professionalDetail?.awards.map(
-                      (award, index) => (
-                        <p className="text-lg" key={index}>
-                          {award}
-                        </p>
-                      ),
-                    )
+                  {data?.data?.Awards && data.data.Awards.length > 0 ? (
+                    data?.data?.Awards.map((award, index) => (
+                      <p className="text-lg" key={index}>
+                        {award.awardName}
+                      </p>
+                    ))
                   ) : (
                     <p className="text-black text-opacity-50 text-gray-500">
                       No awards to display
@@ -367,15 +372,13 @@ export default function AgentDetails({id}) {
                   </p>
                 </div>
                 <div className="mt-4">
-                  {data?.data?.professionalDetail?.specialties &&
-                  data.data.professionalDetail.specialties.length > 0 ? (
-                    data?.data?.professionalDetail?.specialties.map(
-                      (specialty, index) => (
-                        <p className="text-lg" key={index}>
-                          {specialty}
-                        </p>
-                      ),
-                    )
+                  {data?.data?.specialties &&
+                  data.data.specialties.length > 0 ? (
+                    data?.data?.specialties.map((specialty, index) => (
+                      <p className="text-lg" key={index}>
+                        {specialty.name}
+                      </p>
+                    ))
                   ) : (
                     <p className="text-black text-opacity-50 text-gray-500">
                       No awards to display
@@ -391,18 +394,16 @@ export default function AgentDetails({id}) {
                   </p>
                 </div>
                 <div className="mt-4">
-                  {data?.data?.professionalDetail?.designations &&
-                  data.data.professionalDetail.designations.length > 0 ? (
-                    data?.data?.professionalDetail?.designations.map(
-                      (designation, index) => (
-                        <p className="text-lg" key={index}>
-                          {designation}
-                        </p>
-                      ),
-                    )
+                  {data?.data?.designations &&
+                  data.data.designations.length > 0 ? (
+                    data?.data?.designations.map((designation, index) => (
+                      <p className="text-lg" key={index}>
+                        {designation.designationName}
+                      </p>
+                    ))
                   ) : (
                     <p className="text-black text-opacity-50 text-gray-500">
-                      No awards to display
+                      No designation to display
                     </p>
                   )}
                 </div>

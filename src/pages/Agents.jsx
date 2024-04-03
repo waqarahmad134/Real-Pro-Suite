@@ -1,5 +1,3 @@
-import { Column } from 'primereact/column';
-import { TreeTable } from 'primereact/treetable';
 import React, { useEffect, useState } from 'react';
 import useFetch from '../ApiClient/GetApi';
 import { PostApi } from '../ApiClient/PostApi';
@@ -23,14 +21,18 @@ import {
 
 export default function Agents() {
   const navigate = useNavigate();
+
   const AgentDetail = async (id) => {
-    navigate('/agentDetails');
+    alert(id);
+    navigate(`/agentDetails`, {
+      state: {
+        agentId: id,
+      },
+    });
   };
   const { data, reFetch } = useFetch('dashboard/v1/allAgents');
   const offices = useFetch('dashboard/v1/allOffices');
   const roles = useFetch('dashboard/v1/getroles');
-
-  const [nodes, setNodes] = useState([]);
   const [model, setModel] = useState(false);
   const [searchField, setSearchField] = useState('');
   const [filter, setFilter] = useState('lastName');
@@ -82,22 +84,6 @@ export default function Agents() {
           agent.role.name.toLowerCase().includes(searchField),
         )
       : data?.data;
-
-  useEffect(() => {
-    if (filteredAgents) {
-      const formattedNodes = filteredAgents.map((agent) => ({
-        data: {
-          id: agent.id,
-          firstname: agent.firstName,
-          lastname: agent.lastName,
-          email: agent.email,
-          officename: agent.office.officeName,
-          role: agent.role.name,
-        },
-      }));
-      setNodes(formattedNodes);
-    }
-  }, [filteredAgents]);
 
   const onChange = (e) => {
     setAgentData({ ...agentData, [e.target.name]: e.target.value });
@@ -373,25 +359,65 @@ export default function Agents() {
         )}
       </div>
 
-      <div>
-        <TreeTable
-          value={nodes}
-          paginator
-          rows={5}
-          rowsPerPageOptions={[5, 10, 25]}
-          tableStyle={{ minWidth: '50rem' }}
-        >
-          <Column field="firstname" header="First Name" expander></Column>
-          <Column field="lastname" header="Last Name"></Column>
-          <Column field="email" header="Email"></Column>
-          <Column field="officename" header="Office Name"></Column>
-          <Column field="role" header="Role"></Column>
-          <Column
-            body={(node) => (
-              <Button onClick={() => AgentDetail(node.id)}>Details</Button>
-            )}
-          />
-        </TreeTable>
+      <div className="overflow-x-auto">
+        <div className="inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200">
+          <table className="min-w-full">
+            <thead>
+              <tr className="bg-gray-100">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  First Name
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Last Name
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Email
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Office Name
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Role
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Action
+                </th>
+              </tr>
+            </thead>
+            <tbody className="bg-white divide-y divide-gray-200">
+              {filteredAgents.length > 0 &&
+                filteredAgents.map((agent) => (
+                  <tr key={agent.id}>
+                    <td className="px-6 py-4 whitespace-nowrap capitalize">
+                      {agent.firstName}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap capitalize">
+                      {agent.lastName}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      {agent.email}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      {agent.office.officeName}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      {agent.role.name}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <Button
+                        onClick={() => {
+                          AgentDetail(agent.id);
+                        }}
+                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                      >
+                        Details
+                      </Button>
+                    </td>
+                  </tr>
+                ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </DefaultLayout>
   );

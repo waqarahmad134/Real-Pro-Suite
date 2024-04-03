@@ -20,7 +20,8 @@ import ContactInfo from './pages/ContactInfo';
 import ProfessionalDetails from './pages/ProfessionalDetails';
 import PersonalDetails from './pages/PersonalDetails';
 import Awards from './pages/Awards';
-import AgentDetails from './pages/AgentDetails'
+import AgentDetails from './pages/AgentDetails';
+import NewsDetails from './pages/newsDetails';
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -157,7 +158,7 @@ function App() {
               }
             />
             <Route
-              path="/agentDetails"
+              path="/agentDetails" // Define the path with a parameter ":id"
               element={
                 <>
                   <PageTitle title="AgentDetails | Real Pro Suite" />
@@ -180,6 +181,15 @@ function App() {
                 <>
                   <PageTitle title="Signup | TailAdmin - Tailwind CSS Admin Dashboard Template" />
                   <SignUp />
+                </>
+              }
+            />
+            <Route
+              path="/resource"
+              element={
+                <>
+                  <PageTitle title="Resource | Real Pro Suite" />
+                  <NewsDetails />
                 </>
               }
             />

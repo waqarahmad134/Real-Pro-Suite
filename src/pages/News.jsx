@@ -198,23 +198,6 @@ export default function News() {
             />
           </>
         ))}
-        {/* <div className="grid grid-cols-2 gap-3 my-5">
-          <NewsCard
-            img="https://i.ytimg.com/vi/seNKZeot5A8/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AHUBoAC4AOKAgwIABABGGUgVChJMA8=&rs=AOn4CLBi1q3K0RJyVC3Dq3sQn2Pdn8ZaJg"
-            title="Top 10 reports coming in June"
-            order="order-1"
-            desc="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Inventore,
-          in debitis soluta labore modi hic ullam aspernatur vero voluptate
-          error."
-          />
-          <NewsCard
-            img="https://i.ytimg.com/vi/seNKZeot5A8/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AHUBoAC4AOKAgwIABABGGUgVChJMA8=&rs=AOn4CLBi1q3K0RJyVC3Dq3sQn2Pdn8ZaJg"
-            title="Jared james' Advice? Breathe and Be Ready"
-            order="order-1"
-            desc="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Inventore,
-          in debitis soluta labore modi hic."
-          />
-        </div> */}
       </div>
     </DefaultLayout>
   );
