@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { FaBookmark } from 'react-icons/fa';
 import { FaBookOpen } from 'react-icons/fa';
 import { CiBookmark, CiTrash } from 'react-icons/ci';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 export default function NewsCard(props) {
+  const navigate = useNavigate();
+
   const [showThumbnail, setShowThumbnail] = useState(true);
 
   const handleMouseEnter = () => {
@@ -13,7 +15,13 @@ export default function NewsCard(props) {
   const handleMouseLeave = () => {
     setShowThumbnail(true);
   };
-
+  const VideoDetail = async (id) => {
+    navigate(`/resource`, {
+      state: {
+        videoId: id,
+      },
+    });
+  };
   return (
     <div className="bg-white rounded-lg p-5 m-5">
       <div className="grid grid-cols-2">
@@ -22,32 +30,27 @@ export default function NewsCard(props) {
             className="rounded-lg relative"
             style={{ maxWidth: '100%', paddingBottom: '56.25%', height: 0 }}
           >
-            <Link
-              to={`/resource`}
-              target="_blank"
-              className="bg-white rounded-lg p-5 m-5"
+            <div
+              className="absolute inset-0"
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+              onClick={()=>VideoDetail(props.id)}
             >
-              <div
-                className="absolute inset-0"
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
-              >
-                {showThumbnail ? (
-                  <img
-                    className="w-full h-full object-contain rounded-lg"
-                    src={props?.thumbnail}
-                    alt="Thumbnail"
-                  />
-                ) : (
-                  <video
-                    className="w-full h-full object-cover rounded-lg"
-                    autoPlay
-                    src={props.video}
-                    muted
-                  ></video>
-                )}
-              </div>
-            </Link>
+              {showThumbnail ? (
+                <img
+                  className="w-full h-full object-contain rounded-lg"
+                  src={props?.thumbnail}
+                  alt="Thumbnail"
+                />
+              ) : (
+                <video
+                  className="w-full h-full object-cover rounded-lg"
+                  autoPlay
+                  src={props.video}
+                  muted
+                ></video>
+              )}
+            </div>
           </div>
         </div>
         <div className="p-3 md:p-5">
@@ -59,10 +62,8 @@ export default function NewsCard(props) {
           </h5>
         </div>
       </div>
-      <div className="p-5 flex justify-end">
-      <Link to={`/resource`} className="bg-white rounded-lg p-5 m-5">
-          <h5 className="text-gray-400 text-sm">MORE TO KNOW</h5>
-        </Link>
+      <div className="p-5 flex justify-end" onClick={()=>VideoDetail(props.key)}>
+        <h5 className="text-gray-400 text-sm">MORE TO KNOW</h5>
       </div>
       <div className="bg-gray-300 rounded-md">
         <div className="flex justify-between items-center px-5 py-1">

@@ -186,6 +186,7 @@ export default function News() {
           <>
             <NewsCard
               key={index}
+              id={data?.id}
               thumbnail={`${BASE_URL}${data?.thumbnailUrl}`}
               video={`${BASE_URL}${data?.videoUrl}`}
               title={data?.title}
