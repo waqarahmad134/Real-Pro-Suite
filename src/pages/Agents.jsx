@@ -90,7 +90,6 @@ export default function Agents() {
   };
   const addAgentFunc = async (e) => {
     e.preventDefault();
-    // Validation logic similar to addOfficeFunc
     if (agentData?.nickName === '') {
       error_toaster('Please Add Nick Name');
     } else if (agentData?.firstName === '') {
@@ -110,7 +109,7 @@ export default function Agents() {
     } else if (agentData?.roleId === '') {
       error_toaster('Please Select Role');
     } else {
-      let res = await PostApi('dashboard/v1/addAgent', agentData); // Assuming endpoint for adding agent is 'dashboard/v1/addAgent'
+      let res = await PostApi('dashboard/v1/addAgent', agentData);
       if (res?.data?.status === '1') {
         success_toaster(res?.data?.message);
         setAgentData({
@@ -121,12 +120,11 @@ export default function Agents() {
           password: '',
           DOB: '',
           gender: '',
-          officeId: '', // Resetting officeId to default value
+          officeId: '', 
           roleId: '',
         });
         reFetch();
         setModel(false);
-        // Perform any additional actions like reFetch and closing modal
       } else {
         error_toaster(res?.data?.message);
       }
