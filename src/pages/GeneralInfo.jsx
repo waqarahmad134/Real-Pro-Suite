@@ -5,6 +5,8 @@ import { PostApi } from '../ApiClient/PostApi';
 import { success_toaster } from '../components/toaster/Toaster';
 import DefaultLayout from '../layout/DefaultLayout';
 import { Loader2 } from '../components/loader/Loader';
+import formatDate from '../Utils/dateformat';
+
 export default function GeneralInfo() {
   const [formData, setFormData] = useState({
     firstName: '',
@@ -15,6 +17,7 @@ export default function GeneralInfo() {
     confirmPassword: '',
   });
   const { data, reFetch } = useFetch('dashboard/v1/getGeneralInfo');
+
   const [loading, SetLoading] = useState(false);
   const onChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -135,7 +138,7 @@ export default function GeneralInfo() {
                   <h3 className="text-lg text-gray-500 font-semibold">
                     Birth Date
                   </h3>
-                  <p className="">{data?.data?.dateOfBirth}</p>
+                  <p className="">{formatDate(data?.data?.dateOfBirth)}</p>
                 </div>
                 <div>
                   <h3 className="text-lg text-gray-500 font-semibold">
@@ -145,10 +148,10 @@ export default function GeneralInfo() {
                 </div>
                 <div>
                   <h3 className="text-lg text-gray-500 font-semibold">
-                    First License
+                    Join Date
                   </h3>
                   <h4 className="text-lg capitalize">
-                    {data?.data?.firstLicensed}
+                    {formatDate(data?.data?.verifiedAt)}
                   </h4>
                 </div>
               </div>

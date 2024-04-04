@@ -23,7 +23,6 @@ export default function Agents() {
   const navigate = useNavigate();
 
   const AgentDetail = async (id) => {
-    alert(id);
     navigate(`/agentDetails`, {
       state: {
         agentId: id,

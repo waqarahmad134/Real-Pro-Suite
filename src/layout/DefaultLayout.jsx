@@ -6,6 +6,10 @@ import { useLocation } from 'react-router-dom';
 const DefaultLayout = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const location = useLocation().pathname;
+  const name = localStorage.getItem('name');
+  const Designation = localStorage.getItem('Designation');
+  const email = localStorage.getItem('email');
+  const picture = localStorage.getItem('picture');
 
   return (
     <div className="dark:bg-boxdark-2 dark:text-bodydark">
@@ -23,7 +27,14 @@ const DefaultLayout = ({ children }) => {
         {/* <!-- ===== Content Area Start ===== --> */}
         <div className="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden ">
           {/* <!-- ===== Header Start ===== --> */}
-          <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+          <Header
+            sidebarOpen={sidebarOpen}
+            setSidebarOpen={setSidebarOpen}
+            name={name}
+            Designation={Designation}
+            picutre={picture}
+            email={email}
+          />
           {/* <!-- ===== Header End ===== --> */}
 
           {/* <!-- ===== Main Content Start ===== --> */}

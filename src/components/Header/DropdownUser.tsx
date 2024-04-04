@@ -2,7 +2,12 @@ import { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import UserOne from '../../images/user/user-01.png';
 
-const DropdownUser = () => {
+const DropdownUser = (props: {
+  name: string | null;
+  Designation: string | null;
+  picutre: string;
+  email: string;
+}) => {
   const navigate = useNavigate();
   const logoutAdmin = async () => {
     localStorage.removeItem('loginstatus');
@@ -53,15 +58,21 @@ const DropdownUser = () => {
       >
         <span className="hidden text-right lg:block">
           <span className="block text-sm font-medium text-black dark:text-white">
-            Thomas Anree
+            {props.name}
           </span>
-          <span className="block text-xs">UX Designer</span>
+          <span className="block text-xs">{props.Designation}</span>
         </span>
 
-        <span className="h-12 w-12 rounded-full">
-          <img src={UserOne} alt="User" />
-        </span>
-
+        {/* <span className="h-12 w-12 rounded-full">
+          <img src={props.picutre} alt="User" />
+        </span> */}
+        <div className="inline-block h-12 w-12 overflow-hidden border-2 border-white rounded-full shadow-md">
+          <img
+            src={props.picutre}
+            alt="User"
+            className="h-full w-full object-cover"
+          />
+        </div>
         <svg
           className="hidden fill-current sm:block"
           width="12"
@@ -91,10 +102,16 @@ const DropdownUser = () => {
         <div className="bg-white shadow-xl rounded-lg w-64">
           <div className="p-5">
             <div className="text-center">
-              <img className="w-20 mx-auto" src={UserOne} alt="profile pic" />
-              <h3 className="font-semibold">Thomas Anree</h3>
+              <div className="inline-block h-20 w-20 overflow-hidden border-2 border-white rounded-full shadow-md">
+                <img
+                  src={props.picutre}
+                  alt="User"
+                  className="h-full w-full object-cover rounded-full"
+                />
+              </div>
+              <h3 className="font-semibold">{props.name}</h3>
               <h3 className="text-black text-opacity-50 text-sm">
-                ThomasAnree@gmail.com
+                {props.email}
               </h3>
               <Link
                 target="_blank"

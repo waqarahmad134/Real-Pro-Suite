@@ -120,7 +120,7 @@ export default function ProfessionalDetails() {
                 {data?.data?.licenses && data.data.licenses.length > 0 ? (
                   data.data.licenses.map((license, index) => (
                     <p className="capitalize" key={index}>
-                      {license?.name}
+                      {license?.LicenseName}
                     </p>
                   ))
                 ) : (
@@ -138,17 +138,17 @@ export default function ProfessionalDetails() {
                 <p className="text-lg text-gray-500 font-semibold">
                   Specialties
                 </p>
-                <div className="flex items-center gap-x-2 my-2 text-themeGray2">
-                  <FaPlus />
-                  <button>Add</button>
-                </div>
+                <button className="flex items-center gap-x-2">
+                  <MdEdit />
+                  Edit
+                </button>
               </div>
               <hr className="my-3" />
               <div>
                 {data?.data?.specialties && data.data.specialties.length > 0 ? (
                   data.data.specialties.map((specialty, index) => (
                     <p className="capitalize" key={index}>
-                      {specialty?.name}
+                      {specialty?.specialityName}
                     </p>
                   ))
                 ) : (
@@ -156,6 +156,10 @@ export default function ProfessionalDetails() {
                     <p>No Specialties Found</p>
                   </div>
                 )}
+                <div className="flex items-center gap-x-2 my-2 text-themeGray2">
+                  <FaPlus />
+                  <button>Add</button>
+                </div>
               </div>
             </div>
             <div>
@@ -174,7 +178,7 @@ export default function ProfessionalDetails() {
                 data.data.designations.length > 0 ? (
                   data.data.designations.map((designation, index) => (
                     <p className="capitalize" key={index}>
-                      {designation?.name}
+                      {designation?.designationName}
                     </p>
                   ))
                 ) : (
@@ -194,16 +198,6 @@ export default function ProfessionalDetails() {
               <div className="flex justify-between items-center mt-4">
                 <p>Gastonia</p>
                 <p>Non-Editable</p>
-              </div>
-            </div>
-            <div className="flex justify-end">
-              <div>
-                <button
-                  onClick={update_profile}
-                  className="bg-themeBlue text-white rounded py-1 px-8 border border-themeBlue hover:text-themeBlue hover:bg-white"
-                >
-                  Update
-                </button>
               </div>
             </div>
           </div>

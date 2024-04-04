@@ -3,10 +3,13 @@ import DropdownUser from './DropdownUser';
 import LogoIcon from '../../../public/images/logo.png';
 import AlterLogo from '../../../public/images/favicon.png';
 import DarkModeSwitcher from './DarkModeSwitcher';
-
 const Header = (props: {
   sidebarOpen: string | boolean | undefined;
   setSidebarOpen: (arg0: boolean) => void;
+  name: string | null;
+  Designation: string | null;
+  picutre: string;
+  email: string;
 }) => {
   const location = useLocation().pathname;
   return (
@@ -119,7 +122,7 @@ const Header = (props: {
           </ul>
 
           {/* <!-- User Area --> */}
-          <DropdownUser />
+          <DropdownUser name={props.name} Designation={props.Designation} picutre={props.picutre} email={props.email}/>
           {/* <!-- User Area --> */}
         </div>
       </div>
