@@ -116,7 +116,7 @@ export default function PersonalDetails() {
             <div>
               <div className="flex justify-between">
                 <p className="text-lg text-gray-500 font-semibold">
-                  Personal Bid
+                  Personal BIO
                 </p>
                 <button className="flex items-center gap-x-2">
                   <MdEdit />
@@ -128,6 +128,7 @@ export default function PersonalDetails() {
                 <p>{data?.data?.bio}</p>
               </div>
             </div>
+            {/* Educational Background */}
             <div>
               <div className="flex justify-between">
                 <p className="text-lg text-gray-500 font-semibold">
@@ -135,52 +136,118 @@ export default function PersonalDetails() {
                 </p>
               </div>
               <hr className="my-3" />
-              <div className="mt-4">
+              <div className="mt-10 items-center">
+                {data?.data?.civicActivities &&
+                data.data.civicActivities.length > 0 ? (
+                  <div className="mt-4 flex flex-wrap items-center justify-between">
+                    <p className="font-semibold text-black text-opacity-50 text-gray-500 mr-12 pr-6">
+                      Degree
+                    </p>
+                    <p className="font-semibold text-black text-opacity-50 text-gray-500 mr-12 pr-6">
+                      Institution
+                    </p>
+                    <p className="font-semibold text-black text-opacity-50 text-gray-500 mr-12 pr-6">
+                      Start Date
+                    </p>
+                    <p className="font-semibold text-black text-opacity-50 text-gray-500 mr-12 pr-6">
+                      Completion Date
+                    </p>
+                  </div>
+                ) : (
+                  ''
+                )}
                 {data?.data?.education && data.data.education.length > 0 ? (
                   data.data.education.map((education, index) => (
-                    <p className="capitalize" key={index}>
-                      {education?.name}
-                    </p>
+                    <div
+                      className="mt-4 flex flex-wrap items-center justify-between"
+                      key={index}
+                    >
+                      <p className="text-lg mr-12 pr-6 capitalize">
+                        {education?.degree}
+                      </p>
+                      <p className="text-lg mr-12 pr-6 capitalize">
+                        {education?.institution}
+                      </p>
+                      <p className="text-lg mr-12 pr-6 capitalize">
+                        {new Date(education?.startedAt).toLocaleDateString()}
+                      </p>
+                      <p className="text-lg mr-12 pr-6 capitalize">
+                        {new Date(education?.completedAt).toLocaleDateString()}
+                      </p>
+                    </div>
                   ))
                 ) : (
                   <p>No educational background to display</p>
                 )}
-
                 <div className="flex items-center gap-x-2 my-4 text-themeGray2">
                   <FaPlus />
                   <button>Add</button>
                 </div>
               </div>
             </div>
+            {/* CivicActivities */}
             <div>
               <div className="flex justify-between">
                 <p className="text-lg text-gray-500 font-semibold">
                   Civic Activities
                 </p>
-                <div className="flex items-center gap-x-2 my-4 text-themeGray2">
-                  <FaPlus />
-                  <button>Add</button>
-                </div>
               </div>
               <hr className="my-3" />
-              <div className="mt-4">
+              <div className="mt-10 items-center">
                 {data?.data?.civicActivities &&
                 data.data.civicActivities.length > 0 ? (
-                  data.data.civicActivities.map((activity, index) => (
-                    <p className="capitalize" key={index}>
-                      {activity?.name}
+                  <div className="mt-4 flex flex-wrap items-center justify-between">
+                    <p className="text-lg text-black text-opacity-50 text-gray-500 mr-12 pr-6">
+                      Activity Type
                     </p>
+                    <p className="text-lg text-black text-opacity-50 text-gray-500 mr-12 pr-6">
+                      Organization
+                    </p>
+                    <p className="text-lg text-black text-opacity-50 text-gray-500 mr-12 pr-6">
+                      Role
+                    </p>
+                    <p className="text-lg text-black text-opacity-50 text-gray-500 mr-12 pr-6">
+                      Start Date
+                    </p>
+                    <p className="text-lg text-black text-opacity-50 text-gray-500 mr-12 pr-6">
+                      End Date
+                    </p>
+                  </div>
+                ) : (
+                  ''
+                )}
+                {data?.data?.civicActivities &&
+                data.data.civicActivities.length > 0 ? (
+                  data?.data?.civicActivities.map((activity, index) => (
+                    <div
+                      className="mt-4 flex flex-wrap items-center justify-between"
+                      key={index}
+                    >
+                      <p className="text-lg mr-12 pr-6">
+                        {activity?.activityType}
+                      </p>
+                      <p className="text-lg mr-12 pr-6">
+                        {activity?.organization}
+                      </p>
+                      <p className="text-lg mr-12 pr-6">{activity?.role}</p>
+                      <p className="text-lg mr-12 pr-6">
+                        {new Date(activity?.startDate).toLocaleDateString()}
+                      </p>
+                      <p className="text-lg mr-8 pr-8">
+                        {new Date(activity?.endDate).toLocaleDateString()}
+                      </p>
+                    </div>
                   ))
                 ) : (
-                  <p>No civic activities to display</p>
+                  <p>No activities to display</p>
                 )}
-
                 <div className="flex items-center gap-x-2 my-4 text-themeGray2">
                   <FaPlus />
                   <button>Add</button>
                 </div>
               </div>
             </div>
+            {/* Hobbies */}
             <div>
               <div className="flex justify-between">
                 <p className="text-lg text-gray-500 font-semibold">Hoobies</p>
@@ -190,7 +257,7 @@ export default function PersonalDetails() {
                 {data?.data?.hobbies && data.data.hobbies.length > 0 ? (
                   data.data.hobbies.map((hobbie, index) => (
                     <p className="capitalize" key={index}>
-                      {hobbie?.name}
+                      {hobbie?.hobbyType}
                     </p>
                   ))
                 ) : (
@@ -203,21 +270,30 @@ export default function PersonalDetails() {
                 </div>
               </div>
             </div>
-            <div>
+            {/* Languages */}
+            <div>                
               <div className="flex justify-between">
                 <p className="text-lg text-gray-500 font-semibold">Languages</p>
               </div>
               <hr className="my-3" />
               <div className="flex justify-between items-center mt-4">
-                {data?.data?.languages && data.data.languages.length > 0 ? (
-                  data.data.languages.map((language, index) => (
-                    <p className="capitalize" key={index}>
-                      {language?.name}
-                    </p>
-                  ))
-                ) : (
-                  <p>No language to display</p>
-                )}
+              {data?.data?.languages && data.data.languages.length > 0 ? (
+                    data?.data?.languages.map((language, index) => (
+                      <div
+                        className="mt-4 flex flex-wrap items-center justify-between"
+                        key={index}
+                      >
+                        <p className="text-lg mr-12 pr-6 capitalize">
+                          {language?.languageName}
+                        </p>
+                        <p className="text-lg mr-12 pr-6 capitalize">
+                          {language?.proficiency}
+                        </p>
+                      </div>
+                    ))
+                  ) : (
+                    <p>No languages to display</p>
+                  )}
                 <button className="flex items-center gap-x-2">
                   <MdEdit />
                   Edit
@@ -229,16 +305,7 @@ export default function PersonalDetails() {
                 <button>Add</button>
               </div>
             </div>
-            <div className="flex justify-end">
-              <div>
-                <button
-                  onClick={update_profile}
-                  className="bg-themeBlue text-white rounded py-1 px-8 border border-themeBlue hover:text-themeBlue hover:bg-white"
-                >
-                  Update
-                </button>
-              </div>
-            </div>
+ 
           </div>
         )}
       </section>

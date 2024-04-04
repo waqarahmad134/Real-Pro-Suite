@@ -35,6 +35,12 @@ const SignIn = () => {
         localStorage.setItem('accessToken', res.data.data.accessToken);
         localStorage.setItem('userId', res.data.data.id);
         localStorage.setItem('roleId', res.data.data.role?.id);
+
+        localStorage.setItem('name', res.data.data.name);
+        localStorage.setItem('email', res.data.data.email);
+        localStorage.setItem('Designation', res.data.data.role?.name);
+        localStorage.setItem('picture', res.data.data.image);
+
         localStorage.setItem(
           'permissions',
           JSON.stringify(res?.data?.data?.role?.rolePermissions),
