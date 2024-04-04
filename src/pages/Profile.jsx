@@ -87,37 +87,37 @@ export default function Profile() {
           <Loader2 />
         ) : (
           <>
-           
-              <div className="bg-white p-10 space-y-6">
-                <h3 className="text-lg text-gray-500 font-semibold">
-                  General Info
-                </h3>
-                <hr />
-                <div className="grid md:grid-cols-2 gap-x-5 gap-y-4">
-                  <div className="space-y-2">
-                    <div>
-                      <h4 className="text-lg">{data?.data?.firstName} {data?.data?.lastName}</h4>
-                      <p className="text-black text-opacity-50">
-                        {data?.data?.dateOfBirth}
-                      </p>
-                    </div>
-                    <div>
-                      <h4 className="text-lg capitalize">{data?.data?.gender}</h4>
-                      <p className="text-black text-opacity-50">
-                        {data?.data?.firstLicensed}
-                      </p>
-                    </div>
-                  
+            <div className="bg-white p-10 space-y-6">
+              <h3 className="text-lg text-gray-500 font-semibold">
+                General Info
+              </h3>
+              <hr />
+              <div className="grid md:grid-cols-2 gap-x-5 gap-y-4">
+                <div className="space-y-2">
+                  <div>
+                    <h4 className="text-lg">
+                      {data?.data?.firstName} {data?.data?.lastName}
+                    </h4>
+                    <p className="text-black text-opacity-50">
+                      {data?.data?.dateOfBirth}
+                    </p>
                   </div>
-                  <div className="">
-                    <img
-                      className="ml-auto"
-                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVA_HrQLjkHiJ2Ag5RGuwbFeDKRLfldnDasw&usqp=CAU"
-                      alt=""
-                    />
+                  <div>
+                    <h4 className="text-lg capitalize">{data?.data?.gender}</h4>
+                    <p className="text-black text-opacity-50">
+                      {data?.data?.firstLicensed}
+                    </p>
                   </div>
                 </div>
-                {/* <h3 className="text-lg text-gray-500 font-semibold">
+                <div className="">
+                  <img
+                    className="ml-auto"
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVA_HrQLjkHiJ2Ag5RGuwbFeDKRLfldnDasw&usqp=CAU"
+                    alt=""
+                  />
+                </div>
+              </div>
+              {/* <h3 className="text-lg text-gray-500 font-semibold">
                   Phone Numbers
                 </h3>
                 <hr />
@@ -150,19 +150,17 @@ export default function Profile() {
                     </div>
                   </div>
                 </div> */}
-                <div className="flex justify-end">
-                  <div>
-                    <button
-                      onClick={update_profile}
-                      className="bg-themeBlue text-white rounded py-1 px-8 border border-themeBlue hover:text-themeBlue hover:bg-white"
-                    >
-                      Update
-                    </button>
-                  </div>
+              <div className="flex justify-end">
+                <div>
+                  <button
+                    onClick={update_profile}
+                    className="bg-themeBlue text-white rounded py-1 px-8 border border-themeBlue hover:text-themeBlue hover:bg-white"
+                  >
+                    Update
+                  </button>
                 </div>
               </div>
-           
-                       
+            </div>
           </>
         )}
       </section>

@@ -230,31 +230,52 @@ export default function Offices() {
         )}
       </div>
       <div>
-        <TreeTable
-          value={nodes}
-          paginator
-          rows={5}
-          rowsPerPageOptions={[5, 10, 25]}
-          tableStyle={{ minWidth: '50rem' }}
-        >
-          <Column field="name" header="Name" expander></Column>
-          <Column
-            field="establishedDate"
-            header="Established Date"
-            expander
-          ></Column>
-          <Column
-            field="franchiseName"
-            header="Franchise Name"
-            expander
-          ></Column>
-          <Column
-            field="employeeCapacity"
-            header="Employee Capacity"
-            expander
-          ></Column>
-          <Column field="status" header="Franchise Network"></Column>
-        </TreeTable>
+        <div className="overflow-x-auto">
+          <div className="inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200">
+            <table className="min-w-full">
+              <thead>
+                <tr className="bg-gray-100">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Name
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Established Date
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Franchise Name
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Employee Capacity
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Franchise Network
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="bg-white divide-y divide-gray-200">
+                {data?.data?.map((office) => (
+                  <tr key={office.id}>
+                    <td className="px-6 py-4 whitespace-nowrap capitalize">
+                      {office.officeName}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      {formatDate(office.dateEstablished)}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      {office.franchiseName}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      {office.employeeCapacity}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      {office.franchiseNetwork === true ? 'True' : 'False'}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     </DefaultLayout>
   );

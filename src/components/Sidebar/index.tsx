@@ -8,8 +8,8 @@ interface SidebarProps {
 }
 
 const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
-  const location = useLocation();
-  const { pathname } = location;
+  const location = useLocation().pathname;
+  // const { pathname } = location;
 
   const trigger = useRef<any>(null);
   const sidebar = useRef<any>(null);
@@ -102,19 +102,19 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
 
             <ul className="mb-6 flex flex-col gap-1.5">
               {/* <!-- Menu Item Profile --> */}
-              {pathname.includes('profile') ||
-              pathname.includes('general-info') ||
-              pathname.includes('contact-info') ||
-              pathname.includes('professional-details') ||
-              pathname.includes('personal-details') ||
-              pathname.includes('awards') ? (
+              {location.includes('profile') ||
+              location.includes('general-info') ||
+              location.includes('contact-info') ||
+              location.includes('professional-details') ||
+              location.includes('personal-details') ||
+              location.includes('awards') ? (
                 <>
                   <li>
                     <NavLink
                       to="/profile"
-                      className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-themeBlue duration-300 ease-in-out hover:bg-[#0068d1] hover:text-white dark:text-white dark:hover:bg-meta-4 ${
-                        pathname.includes('profile') &&
-                        'bg-themeGray2 dark:bg-meta-4'
+                      className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-themeBlue duration-300 ease-in-out hover:bg-[#0068d1] hover:text-white 
+                      dark:text-white dark:hover:bg-meta-4 ${
+                        location ===  '/profile' ? 'bg-themeGray2 dark:bg-meta-4' : "bg-transparent"
                       }`}
                     >
                       Profile Overview
@@ -123,9 +123,9 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                   <li>
                     <NavLink
                       to="/general-info"
-                      className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-themeBlue duration-300 ease-in-out hover:bg-[#0068d1] hover:text-white dark:text-white dark:hover:bg-meta-4 ${
-                        pathname.includes('agents') &&
-                        'bg-themeGray2 dark:bg-meta-4'
+                      className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-themeBlue duration-300 ease-in-out hover:bg-[#0068d1] hover:text-white 
+                      zdark:text-white dark:hover:bg-meta-4 ${
+                        location ===  '/general-info' ? 'bg-themeGray2 dark:bg-meta-4' : "bg-transparent"
                       }`}
                     >
                       General Info
@@ -134,9 +134,9 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                   <li>
                     <NavLink
                       to="/contact-info"
-                      className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-themeBlue duration-300 ease-in-out hover:bg-[#0068d1] hover:text-white dark:text-white dark:hover:bg-meta-4 ${
-                        pathname.includes('agents') &&
-                        'bg-graydark dark:bg-meta-4'
+                      className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-themeBlue duration-300 ease-in-out hover:bg-[#0068d1] hover:text-white 
+                      dark:text-white dark:hover:bg-meta-4 ${
+                        location ===  '/contact-info' ? 'bg-themeGray2 dark:bg-meta-4' : "bg-transparent"
                       }`}
                     >
                       Contact Info
@@ -145,9 +145,9 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                   <li>
                     <NavLink
                       to="/professional-details"
-                      className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-themeBlue duration-300 ease-in-out hover:bg-[#0068d1] hover:text-white dark:text-white dark:hover:bg-meta-4 ${
-                        pathname.includes('agents') &&
-                        'bg-graydark dark:bg-meta-4'
+                      className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-themeBlue duration-300 ease-in-out hover:bg-[#0068d1] hover:text-white 
+                      dark:text-white dark:hover:bg-meta-4 ${
+                        location ===  '/professional-details' ? 'bg-themeGray2 dark:bg-meta-4' : "bg-transparent"
                       }`}
                     >
                       Professional Details
@@ -156,9 +156,9 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                   <li>
                     <NavLink
                       to="/personal-details"
-                      className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-themeBlue duration-300 ease-in-out hover:bg-[#0068d1] hover:text-white dark:text-white dark:hover:bg-meta-4 ${
-                        pathname.includes('agents') &&
-                        'bg-graydark dark:bg-meta-4'
+                      className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-themeBlue duration-300 ease-in-out hover:bg-[#0068d1] hover:text-white
+                       dark:text-white dark:hover:bg-meta-4 ${
+                        location ===  '/personal-details' ? 'bg-themeGray2 dark:bg-meta-4' : "bg-transparent"
                       }`}
                     >
                       Personal Details
@@ -167,9 +167,9 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                   <li>
                     <NavLink
                       to="/awards"
-                      className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-themeBlue duration-300 ease-in-out hover:bg-[#0068d1] hover:text-white dark:text-white dark:hover:bg-meta-4 ${
-                        pathname.includes('agents') &&
-                        'bg-graydark dark:bg-meta-4'
+                      className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-themeBlue duration-300 ease-in-out hover:bg-[#0068d1] hover:text-white 
+                      dark:text-white dark:hover:bg-meta-4 ${
+                        location ===  '/awards' ? 'bg-themeGray2 dark:bg-meta-4' : "bg-transparent"
                       }`}
                     >
                       Awards
@@ -181,8 +181,9 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                   <li>
                     <NavLink
                       to="/"
-                      className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-themeBlue duration-300 ease-in-out hover:bg-[#0068d1] hover:text-white dark:text-white dark:hover:bg-meta-4 ${
-                        pathname.includes('/') && 'bg-themeGray2 dark:bg-meta-4'
+                      className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-themeBlue duration-300 ease-in-out hover:bg-[#0068d1] hover:text-white 
+                      dark:text-white dark:hover:bg-meta-4 ${
+                        location ===  '/' ? 'bg-themeGray2 dark:bg-meta-4' : "bg-transparent"
                       }`}
                     >
                       <img
@@ -196,9 +197,9 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                   <li>
                     <NavLink
                       to="/apps"
-                      className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-themeBlue duration-300 ease-in-out hover:bg-[#0068d1] hover:text-white dark:text-white dark:hover:bg-meta-4 ${
-                        pathname.includes('apps') &&
-                        'bg-themeGray2 dark:bg-meta-4'
+                      className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-themeBlue duration-300 ease-in-out hover:bg-[#0068d1] hover:text-white 
+                      dark:text-white dark:hover:bg-meta-4 ${
+                        location ===  '/apps' ? 'bg-themeGray2 dark:bg-meta-4' : "bg-transparent"
                       }`}
                     >
                       <img
@@ -213,9 +214,9 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                   <li>
                     <NavLink
                       to="/news&resources"
-                      className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-themeBlue duration-300 ease-in-out hover:bg-[#0068d1] hover:text-white dark:text-white dark:hover:bg-meta-4 ${
-                        pathname.includes('news&resources') &&
-                        'bg-themeGray2 dark:bg-meta-4'
+                      className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-themeBlue duration-300 ease-in-out hover:bg-[#0068d1] hover:text-white 
+                      dark:text-white dark:hover:bg-meta-4 ${
+                        location ===  '/news&resources' ? 'bg-themeGray2 dark:bg-meta-4' : "bg-transparent"
                       }`}
                     >
                       <img
@@ -229,9 +230,9 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                   <li>
                     <NavLink
                       to="/tools"
-                      className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-themeBlue duration-300 ease-in-out hover:bg-[#0068d1] hover:text-white dark:text-white dark:hover:bg-meta-4 ${
-                        pathname.includes('tools') &&
-                        'bg-graydark dark:bg-meta-4'
+                      className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-themeBlue duration-300 ease-in-out hover:bg-[#0068d1] hover:text-white 
+                      dark:text-white dark:hover:bg-meta-4 ${
+                        location ===  '/tools' ? 'bg-themeGray2 dark:bg-meta-4' : "bg-transparent"
                       }`}
                     >
                       <img
@@ -245,9 +246,9 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                   <li>
                     <NavLink
                       to="/offices"
-                      className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-themeBlue duration-300 ease-in-out hover:bg-[#0068d1] hover:text-white dark:text-white dark:hover:bg-meta-4 ${
-                        pathname.includes('offices') &&
-                        'bg-themeGray2 dark:bg-meta-4'
+                      className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-themeBlue duration-300 ease-in-out hover:bg-[#0068d1] hover:text-white 
+                      dark:text-white dark:hover:bg-meta-4 ${
+                        location ===  '/offices' ? 'bg-themeGray2 dark:bg-meta-4' : "bg-transparent"
                       }`}
                     >
                       <img
@@ -261,9 +262,10 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                   <li>
                     <NavLink
                       to="/agents"
-                      className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-themeBlue duration-300 ease-in-out hover:bg-[#0068d1] hover:text-white dark:text-white dark:hover:bg-meta-4 ${
-                        pathname.includes('agents') &&
-                        'bg-themeGray2 dark:bg-meta-4'
+                      className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-themeBlue duration-300 ease-in-out hover:bg-[#0068d1] hover:text-white 
+                      dark:text-white dark:hover:bg-meta-4 ${
+                        location ===  '/agents' ? 'bg-themeGray2 dark:bg-meta-4' : "bg-transparent"
+                        
                       }`}
                     >
                       <img

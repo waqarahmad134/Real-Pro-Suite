@@ -5,13 +5,13 @@ import { BASE_URL } from '../Utils/urls';
 import { useEffect, useState } from 'react';
 import Loader from '../components/loader/Loader';
 import { PostApi } from '../ApiClient/PostApi';
+import SearchBox from '../components/SearchBox/SearchBox';
 import { error_toaster, success_toaster } from '../components/toaster/Toaster';
 import {
   Modal,
   ModalOverlay,
   ModalContent,
   ModalHeader,
-  ModalFooter,
   ModalBody,
   ModalCloseButton,
   Button,
@@ -23,10 +23,22 @@ const Apps = () => {
   const { data, reFetch } = useFetch('dashboard/v1/allApps');
   const [loading, setLoading] = useState(true);
   const [model, setModel] = useState(false);
-
+  const [searchField, setSearchField] = useState('');
   useEffect(() => {
     setTimeout(() => setLoading(false), 1000);
   }, []);
+
+  const onSearchChange = (event) => {
+    const searchField = event.target.value.toLowerCase();
+    setSearchField(searchField);
+  };
+
+  const filteredApps =
+    searchField === ''
+      ? data?.data
+      :  data?.data?.filter((app) =>
+          app.appName.toLowerCase().includes(searchField),
+        );
 
   const handleFavFunc = async (id) => {
     const res = await PostApi('dashboard/v1/addTopApp', {
@@ -58,7 +70,6 @@ const Apps = () => {
     appUrl: '',
     logo: [],
   });
-  console.log(addApp);
 
   const onChange = (e) => {
     setAddApp({ ...addApp, [e.target.name]: e.target.value });
@@ -161,7 +172,22 @@ const Apps = () => {
         </ModalContent>
       </Modal>
       <div className="flex justify-between items-center">
-        <h2 className="text-xl font-semibold my-5">All Apps</h2>
+      <h2 className="text-xl font-semibold">
+          Apps 
+        </h2>
+        <div className="flex justify-center sm:col-span-2 space-x-2 items-center">
+          <SearchBox
+            onChangeHandler={onSearchChange}
+            placeholder={`Search App`}
+            style={{
+              width: '50%',
+              padding: '0.5rem',
+              border: '1px solid #ccc',
+              borderRadius: '0.25rem',
+            }}
+          />
+        </div>
+
         {localStorage.getItem('roleId') === '1' ? (
           <Button className="my-5" onClick={() => setModel(true)}>
             Add New App
@@ -171,8 +197,8 @@ const Apps = () => {
         )}
       </div>
       <div className="grid xl:grid-cols-4 lg:grid-cols-3 grid-cols-2 gap-5">
-        {data?.data?.length > 0
-          ? data?.data?.map((app, index) => (
+        {filteredApps?.length > 0
+          ? filteredApps?.map((app, index) => (
               <Card
                 key={index}
                 title={app.appName}
