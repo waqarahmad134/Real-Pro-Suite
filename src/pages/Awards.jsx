@@ -9,7 +9,7 @@ import { MdEdit } from 'react-icons/md';
 import { FaPlus } from 'react-icons/fa';
 export default function Awards() {
 
-  const { data, reFetch } = useFetch('admin_profile');
+  const { data, reFetch } = useFetch('dashboard/v1/getAwards');
   const [loading, SetLoading] = useState(false);
 
   return (
