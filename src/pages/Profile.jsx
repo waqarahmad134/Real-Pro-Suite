@@ -469,16 +469,16 @@ export default function Profile() {
                   </p>
                 </div>
                 <div className="mt-4">
-                  {data?.data?.specialties &&
-                  data.data.specialties.length > 0 ? (
-                    data?.data?.specialties.map((specialty, index) => (
+                  {data?.data?.specialities &&
+                  data.data.specialities.length > 0 ? (
+                    data?.data?.specialities.map((specialty, index) => (
                       <p className="text-lg" key={index}>
-                        {specialty.name}
+                        {specialty.specialityName}
                       </p>
                     ))
                   ) : (
                     <p className="text-black text-opacity-50 text-gray-500">
-                      No awards to display
+                      No speciality to display
                     </p>
                   )}
                 </div>

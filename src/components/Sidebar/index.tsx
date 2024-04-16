@@ -194,6 +194,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                       Agent Dashboard
                     </NavLink>
                   </li>
+
                   <li>
                     <NavLink
                       to="/apps"
